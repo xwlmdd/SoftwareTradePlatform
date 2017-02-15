@@ -1,2 +1,0 @@
-百度糯米获取城市的代号连接
-https://dianying.nuomi.com/common/city/citylist?hasAll=false&hasLetter=false&isjson=true
