@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <!--
     <classPathEntry
             location="E:\mysql-connector-java-5.1.18-bin.jar"/>
     <context id="my" targetRuntime="MyBatis3">
@@ -13,54 +12,37 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-
+        <!--数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/movieticket"
+                        connectionURL="jdbc:mysql://localhost:3306/softwaretradeplatform"
                         userId="root"
                         password="root">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.mdd.mt.model"
-                            targetProject="D:\intelljcode\MovieTicket\src\main\java">
+        <javaModelGenerator targetPackage="com.yzq.stp.model"
+                            targetProject="D:\code\SoftwareTradePlatform\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.mdd.mt.mapper"
-                         targetProject="D:\intelljcode\MovieTicket\src\main\java">
+        <sqlMapGenerator targetPackage="com.yzq.stp.mapper"
+                         targetProject="D:\code\SoftwareTradePlatform\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="com.mdd.mt.mapper"
-                             targetProject="D:\intelljcode\MovieTicket\src\main\java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.yzq.stp.mapper"
+                             targetProject="D:\code\SoftwareTradePlatform\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="t_cinema" domainObjectName="Cinema"
+        
+        <table tableName="t_user" domainObjectName="User"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="t_movie" domainObjectName="Movie"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-
-        <table tableName="t_movie_cinema" domainObjectName="MovieCinema"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-
-        <table tableName="t_movie_schedule" domainObjectName="MovieSchedule"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-
+ 
     </context>
-    -->
 </generatorConfiguration>
