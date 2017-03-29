@@ -9,14 +9,20 @@
 		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
 		<result column="type" jdbcType="INTEGER" property="type" />
 		<result column="skill" jdbcType="VARCHAR" property="skill" />
-		<result column="create_time" jdbcType="DATE" property="createTime" />
+		<result column="pic" jdbcType="VARCHAR" property="pic" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="real_name" jdbcType="VARCHAR" property="realName" />
+		<result column="qq" jdbcType="VARCHAR" property="qq" />
+		<result column="jishu" jdbcType="VARCHAR" property="jishu" />
 	</resultMap>
 	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
 		type="com.yzq.stp.model.User">
 		<result column="introduce" jdbcType="LONGVARCHAR" property="introduce" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		id, name, pwd, email, mobile, type, skill, create_time
+		id, name, pwd, email, mobile, type, skill, pic, address,
+		real_name, qq,
+		jishu
 	</sql>
 	<sql id="Blob_Column_List">
 		introduce
@@ -30,7 +36,6 @@
 		from t_user
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-
 	<select id="queryUser" parameterType="com.yzq.stp.model.User"
 		resultMap="ResultMapWithBLOBs">
 		SELECT
@@ -39,8 +44,7 @@
 		<include refid="Blob_Column_List" />
 		FROM t_user
 		WHERE name = #{name,jdbcType=VARCHAR}
-		AND pwd =
-		#{pwd,jdbcType=VARCHAR}
+		AND pwd = #{pwd,jdbcType=VARCHAR}
 		AND type = #{type,jdbcType=INTEGER}
 	</select>
 
@@ -60,16 +64,18 @@
 		insert into t_user (id, name,
 		pwd,
 		email, mobile, type,
-		skill, create_time, introduce
-		)
-		values
-		(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		skill, pic, address,
+		real_name, qq, jishu,
+		introduce)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
 		#{pwd,jdbcType=VARCHAR},
 		#{email,jdbcType=VARCHAR},
 		#{mobile,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
-		#{skill,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE},
-		#{introduce,jdbcType=LONGVARCHAR}
-		)
+		#{skill,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},
+		#{realName,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR}, #{jishu,jdbcType=VARCHAR},
+		#{introduce,jdbcType=LONGVARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.yzq.stp.model.User">
 		insert into t_user
@@ -95,8 +101,20 @@
 			<if test="skill != null">
 				skill,
 			</if>
-			<if test="createTime != null">
-				create_time,
+			<if test="pic != null">
+				pic,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="realName != null">
+				real_name,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="jishu != null">
+				jishu,
 			</if>
 			<if test="introduce != null">
 				introduce,
@@ -124,8 +142,20 @@
 			<if test="skill != null">
 				#{skill,jdbcType=VARCHAR},
 			</if>
-			<if test="createTime != null">
-				#{createTime,jdbcType=DATE},
+			<if test="pic != null">
+				#{pic,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="jishu != null">
+				#{jishu,jdbcType=VARCHAR},
 			</if>
 			<if test="introduce != null">
 				#{introduce,jdbcType=LONGVARCHAR},
@@ -153,8 +183,20 @@
 			<if test="skill != null">
 				skill = #{skill,jdbcType=VARCHAR},
 			</if>
-			<if test="createTime != null">
-				create_time = #{createTime,jdbcType=DATE},
+			<if test="pic != null">
+				pic = #{pic,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="jishu != null">
+				jishu = #{jishu,jdbcType=VARCHAR},
 			</if>
 			<if test="introduce != null">
 				introduce = #{introduce,jdbcType=LONGVARCHAR},
@@ -174,7 +216,12 @@
 		type = #{type,jdbcType=INTEGER},
 		skill =
 		#{skill,jdbcType=VARCHAR},
-		create_time = #{createTime,jdbcType=DATE},
+		pic = #{pic,jdbcType=VARCHAR},
+		address =
+		#{address,jdbcType=VARCHAR},
+		real_name = #{realName,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		jishu = #{jishu,jdbcType=VARCHAR},
 		introduce = #{introduce,jdbcType=LONGVARCHAR}
 		where id =
 		#{id,jdbcType=INTEGER}
@@ -190,8 +237,12 @@
 		type =
 		#{type,jdbcType=INTEGER},
 		skill = #{skill,jdbcType=VARCHAR},
-		create_time = #{createTime,jdbcType=DATE}
-		where id =
-		#{id,jdbcType=INTEGER}
+		pic =
+		#{pic,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		real_name = #{realName,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		jishu = #{jishu,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
 	</update>
 </mapper>

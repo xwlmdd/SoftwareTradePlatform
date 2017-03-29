@@ -137,23 +137,6 @@ header.navbar {
 								</div>
 								<div class="clearfix"></div>
 								<br>
-								<div class="form-group">
-									<label class="col-sm-1 control-label">&nbsp;</label>
-									<div class="col-sm-5">
-										<div class="input-group">
-											<span class="input-group-addon"><i></i></span> <select
-												name="skill" style="width: 342px; height: 34px" class="form-control input_public">
-												<option value="互联网应用">互联网应用</option>
-												<option value="桌面应用">桌面应用</option>
-												<option value="移动应用">移动应用</option>
-												<option value="设计与数字媒体">设计与数字媒体</option>
-												<option value="数据分析与大数据">数据分析与大数据</option>
-												<option value="智能硬件">智能硬件</option>
-												<option value="其它分类项目">其它分类项目</option>
-											</select>
-										</div>
-									</div>
-								</div>
 								<div class="clearfix"></div>
 								<br>
 								<div class="form-group">

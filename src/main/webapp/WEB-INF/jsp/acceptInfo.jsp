@@ -11,27 +11,20 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/bootstrap.min.css" media="all">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/jquery.ui.customer.css" media="all">
+	href="<%=request.getContextPath()%>/css/jquery.ui.customer.css"
+	media="all">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/application.css" media="all">
 <script src="<%=request.getContextPath()%>/css/hm.js"></script>
-<script type="text/javascript">
-		var _hmt = _hmt || [];
-                    _hmt.push(['_setCustomVar', 1, 'login', 1, 2]);
-                                        _hmt.push(['_setCustomVar', 2, 'customer', 'jbf', 2]);
-                    		(function() {
-			var hm = document.createElement("script");
-			hm.src = "//hm.baidu.com/hm.js?d1e85a4de65b9e6f5c4aa9a756351e27";
-			var s = document.getElementsByTagName("script")[0];
-			s.parentNode.insertBefore(hm, s);
-		})();
-	</script>
-<script src="<%=request.getContextPath()%>/js/jquery-1.9.1.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/jquery-ui-1.10.4.custom.js."
+<script src="<%=request.getContextPath()%>/js/jquery-1.9.1.js"
+	type="text/javascript"></script>
+<script
+	src="<%=request.getContextPath()%>/js/jquery-ui-1.10.4.custom.js."
 	type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/formValidator-4.1.3.js"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"
+	type="text/javascript"></script>
 </head>
 <body>
 	<header class="navbar">
@@ -41,18 +34,22 @@
 					<nav class="navbar" role="navigation">
 						<div class="navbar-header">
 							<a class="logo" href="http://www.sxsoft.com/"><img
-								src="<%=request.getContextPath()%>/images/logo.png" alt="软件项目交易网"></a>
+								src="<%=request.getContextPath()%>/images/logo.png"
+								alt="软件项目交易网"></a>
 						</div>
 						<div class="navbar-meun">
 							<ul class="list-unstyled">
-								<li><a href="http://www.sxsoft.com/page/project">项目资讯</a></li>
+								<li><a href="http://www.sxsoft.com/page/project">寻找项目</a></li>
 								<li><a href="http://www.sxsoft.com/page/user">接包达人</a></li>
 								<li><a href="http://www.sxsoft.com/page/article">精选文章</a></li>
-								<li><a href="http://www.sxsoft.com/page/recruitmenthome">在线求职</a></li>
 							</ul>
 						</div>
 						<div class="nav navbar-nav navbar-user">
-							<span>${u.name}</span>|<span><a href="<%=request.getContextPath()%>/stp/acceptLogout">退出</a></span>
+							<ul class="list-unstyled">
+								<li><span>${u.name}|</span></li>
+								<li><a
+									href="<%=request.getContextPath()%>/stp/logout">退出</a></li>
+							</ul>
 						</div>
 
 					</nav>
@@ -65,51 +62,22 @@
 			<div class="row main-user-container-row">
 				<div
 					class="col-xs-3 col-sm-3 col-md-3 nopadding-left main-user-slider">
-
 					<div class="role">
 						<a href="http://www.sxsoft.com/my/user">接包方个人中心</a>
 					</div>
 					<ul class="list-unstyled onelevel">
 						<li><span>项目管理</span>
 							<ul class="list-unstyled twolevel">
-
-								<li><a href="http://www.sxsoft.com/my/project/myproject">我的项目</a>
+								<li><a href="http://www.sxsoft.com/my/project/myproject">竞标一览</a>
 								</li>
-								<li><a href="http://www.sxsoft.com/my/bid/histroybids">竞标一览</a>
+								<li><a href="http://www.sxsoft.com/my/bid/histroybids">正在开发项目</a>
 								</li>
-							</ul></li>
-						<li>
-							<p class="hide">
-								<i class="money_management"></i>资金管理
-							</p> <span>资金管理</span>
-							<ul class="list-unstyled twolevel">
-								<li><a href="http://www.sxsoft.com/my/pay">充值/提款 </a></li>
-								<li><a href="http://www.sxsoft.com/my/pay/manage">资金记录</a>
-								</li>
-								<li><a href="http://www.sxsoft.com/my/pay/score">积分记录</a></li>
-							</ul>
-						</li>
-						<li><span>增值服务</span>
-							<ul class="twolevel">
-								<li><a href="http://www.sxsoft.com/my/bid/showcard">竞标卡
-								</a></li>
-								<li><a href="http://www.sxsoft.com/my/fapiao">开具发票 </a></li>
-								<li><a href="http://www.sxsoft.com/my/user/realidentity"
-									onclick="">实名认证</a>
-								</li>
-								<li><a href="http://www.sxsoft.com/my/user/refundagreement">不满意退款</a>
+								<li><a href="http://www.sxsoft.com/my/bid/histroybids">已完成项目</a>
 								</li>
 							</ul></li>
-						<li><span>资讯管理</span>
+						<li><span>推荐项目</span>
 							<ul class="twolevel">
-								<li><a href="http://www.sxsoft.com/my/employ/">企业招聘</a></li>
-								<li><a href="http://www.sxsoft.com/my/employee/">个人求职</a></li>
-							</ul></li>
-						<li><span>我的收藏</span>
-							<ul class="twolevel">
-								<li><a href="http://www.sxsoft.com/my/collection/project">项目收藏</a>
-								</li>
-								<li><a href="http://www.sxsoft.com/my/collection/article">文章收藏</a>
+								<li><a href="http://www.sxsoft.com/my/collection/project">推荐项目</a>
 								</li>
 							</ul></li>
 					</ul>
@@ -124,14 +92,13 @@
 									<div class="settingimg">
 										<a href="http://www.sxsoft.com/upload_img">更换头像</a>
 									</div>
-									<img src="<%=request.getContextPath()%>/images/defaultimg_108.png" title="xwlmdd"
-										alt="xwlmdd" class="img-rounded">
+									<img
+										src="<%=request.getContextPath()%>/images/defaultimg_108.png"
+										title="xwlmdd" alt="xwlmdd" class="img-rounded">
 								</div>
 								<div class="material_txt">
 									<a class="btn btn-success"
-										href="http://www.sxsoft.com/my/user/modifydetail">修改资料</a> <a
-										class="btn btn-pink"
-										href="http://www.sxsoft.com/my/user/modifydetail">设置小时报价</a>
+										href="http://www.sxsoft.com/my/user/modifydetail">修改资料</a> 
 								</div>
 							</div>
 
@@ -139,33 +106,13 @@
 								<div class="row role-user-info">
 									<h3 class="col-sm-4 col-md-4 nopadding">
 										<a href="http://www.sxsoft.com/user/history/285177"
-											class="nowrap col-sm-12 text-left">xwlmdd</a>
+											class="nowrap col-sm-12 text-left">${u.name}</a>
 									</h3>
-									<div class="col-sm-8 col-md-8 nopadding">
-
-										<a href="http://www.sxsoft.com/my/user/realidentity"
-											title="点击申请实名认证"><i class="u_icon_4"></i></a> <a
-											href="http://www.sxsoft.com/my/user/modifydetail"
-											title="点击设置小时报价"><i class="u_icon_5"></i></a> <a
-											href="http://www.sxsoft.com/my/user/refundagreement"
-											title="点击申请不满意退款认证"><i class="u_icon_6"></i></a> <i
-											class="icons_stars0" title="新会员"></i>
-									</div>
 								</div>
 								<div class="row role-user-account">
 									<div class="row col-sm-4 col-md-4 nopadding">
 										<span class="col-xs-5 col-sm-6 col-md-5">账户总额</span> <strong
 											class="col-sm-6 col-xs-7 col-md-7"> 0.00 </strong>
-									</div>
-									<div class="row col-sm-5 col-md-5 role-account-link">
-										<a class="btn btn-success col-md-5"
-											href="http://www.sxsoft.com/my/pay/charge">充值</a> <a
-											class="btn btn-grey col-md-5 col-md-offset-1"
-											href="http://www.sxsoft.com/my/pay/refund">提款</a>
-									</div>
-									<div class="col-md-3 nopadding">
-										<a href="http://www.sxsoft.com/my/pay">充值查询</a>| <a
-											href="http://www.sxsoft.com/my/pay">提款查询</a>
 									</div>
 								</div>
 
@@ -290,9 +237,9 @@
 					</div>
 				</div>
 				<script type="text/javascript">
-    $(function(){
-                        });
-</script>
+					$(function() {
+					});
+				</script>
 			</div>
 		</div>
 	</div>
@@ -338,51 +285,50 @@
 </style>
 
 	<script type="text/javascript">
-$(function(){
-    $('#myCarousel1').carousel({
-        interval: 4000
-    });
-     $("div.accordion-heading-running").mousemove(function(){
-         $("div.accordion-body-running").removeClass("in");
-          $(this).next().addClass("in");
-          $(this).mouseout(function(){
-              $(this).removeClass("in");
-              });
-     });
-     $("div.accordion-heading-finish").mousemove(function(){
-         $("div.accordion-body-finish").removeClass("in");
-          $(this).next().addClass("in");
-          $(this).mouseout(function(){
-              $(this).removeClass("in");
-              });
-     });
-    $('.jbf_search_input').click(function(){
-        $('.jbf_search_input').val('');
-    });
+		$(function() {
+			$('#myCarousel1').carousel({
+				interval : 4000
+			});
+			$("div.accordion-heading-running").mousemove(function() {
+				$("div.accordion-body-running").removeClass("in");
+				$(this).next().addClass("in");
+				$(this).mouseout(function() {
+					$(this).removeClass("in");
+				});
+			});
+			$("div.accordion-heading-finish").mousemove(function() {
+				$("div.accordion-body-finish").removeClass("in");
+				$(this).next().addClass("in");
+				$(this).mouseout(function() {
+					$(this).removeClass("in");
+				});
+			});
+			$('.jbf_search_input').click(function() {
+				$('.jbf_search_input').val('');
+			});
 
-    if ($("#yzm").length > 0) {
-        cgpwd();
-        $("#yzm").click(function(){
-            cgpwd();
-        });
-    }
+			if ($("#yzm").length > 0) {
+				cgpwd();
+				$("#yzm").click(function() {
+					cgpwd();
+				});
+			}
 
-    
-            $.ajax({
-            type : 'post',
-            url : '/page/help/getUserLogo' ,
-            dataType : 'text',
-            data : '',
-            complete : function(response) {
-                $('#userALogo').html(response.responseText);
-            }
-        });
-    });
-    function cgpwd(){
-        $("#yzm").attr('src', '/authpic/getcode/' + new Date().getTime());
-        $("#authcode").val('');
-    }
-</script>
+			$.ajax({
+				type : 'post',
+				url : '/page/help/getUserLogo',
+				dataType : 'text',
+				data : '',
+				complete : function(response) {
+					$('#userALogo').html(response.responseText);
+				}
+			});
+		});
+		function cgpwd() {
+			$("#yzm").attr('src', '/authpic/getcode/' + new Date().getTime());
+			$("#authcode").val('');
+		}
+	</script>
 
 
 

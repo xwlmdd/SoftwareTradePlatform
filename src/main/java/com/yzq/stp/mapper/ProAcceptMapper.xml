@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzq.stp.mapper.ProAcceptMapper">
+	<resultMap id="BaseResultMap" type="com.yzq.stp.model.ProAccept">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="accept_id" jdbcType="INTEGER" property="acceptId" />
+		<result column="jingjia" jdbcType="DOUBLE" property="jingjia" />
+		<result column="isCheck" jdbcType="INTEGER" property="ischeck" />
+		<result column="create_time" jdbcType="DATE" property="createTime" />
+	</resultMap>
+	
+	<resultMap id="jingBiaoMap" type="com.yzq.stp.model.JingBiao">
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="skill" jdbcType="VARCHAR" property="skill" />
+		<result column="real_name" jdbcType="VARCHAR" property="realName" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="accept_id" jdbcType="INTEGER" property="acceptId" />
+		<result column="jingjia" jdbcType="DOUBLE" property="jingjia" />
+		<result column="create_time" jdbcType="DATE" property="createTime" />
+	</resultMap>
+	
+	<select id="lookJingBiao" resultMap="jingBiaoMap">
+		select u.name,u.email,u.mobile,u.shill,u.real_name,p.project_id,p.accept_id,p.jingjia,p.create_time
+		 	from t_user as u ,t_pro_accept as p
+		where 
+			p.id = ${projectId,jdbcType=INTEGER}
+		and 
+			u.id = p.accept_id
+	</select>
+	
+	<sql id="Base_Column_List">
+		id, project_id, accept_id, jingjia, isCheck, create_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_pro_accept
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_pro_accept
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yzq.stp.model.ProAccept">
+		insert into t_pro_accept (id, project_id, accept_id,
+		jingjia, isCheck, create_time
+		)
+		values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
+		#{acceptId,jdbcType=INTEGER},
+		#{jingjia,jdbcType=DOUBLE}, #{ischeck,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.yzq.stp.model.ProAccept">
+		insert into t_pro_accept
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="projectId != null">
+				project_id,
+			</if>
+			<if test="acceptId != null">
+				accept_id,
+			</if>
+			<if test="jingjia != null">
+				jingjia,
+			</if>
+			<if test="ischeck != null">
+				isCheck,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				#{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="jingjia != null">
+				#{jingjia,jdbcType=DOUBLE},
+			</if>
+			<if test="ischeck != null">
+				#{ischeck,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.ProAccept">
+		update t_pro_accept
+		<set>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				accept_id = #{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="jingjia != null">
+				jingjia = #{jingjia,jdbcType=DOUBLE},
+			</if>
+			<if test="ischeck != null">
+				isCheck = #{ischeck,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=DATE},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.ProAccept">
+		update t_pro_accept
+		set project_id = #{projectId,jdbcType=INTEGER},
+		accept_id = #{acceptId,jdbcType=INTEGER},
+		jingjia = #{jingjia,jdbcType=DOUBLE},
+		isCheck = #{ischeck,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=DATE}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<resultMap id="BaseResultMap" type="com.yzq.stp.model.ProAccept">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="accept_id" jdbcType="INTEGER" property="acceptId" />
+		<result column="isCheck" jdbcType="INTEGER" property="ischeck" />
+		<result column="create_time" jdbcType="DATE" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, project_id, accept_id, isCheck, create_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_pro_accept
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_pro_accept
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yzq.stp.model.ProAccept">
+		insert into t_pro_accept (id,
+		project_id, accept_id,
+		isCheck, create_time)
+		values
+		(#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
+		#{acceptId,jdbcType=INTEGER},
+		#{ischeck,jdbcType=INTEGER},
+		#{createTime,jdbcType=DATE})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yzq.stp.model.ProAccept">
+		insert into t_pro_accept
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="projectId != null">
+				project_id,
+			</if>
+			<if test="acceptId != null">
+				accept_id,
+			</if>
+			<if test="ischeck != null">
+				isCheck,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				#{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="ischeck != null">
+				#{ischeck,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.ProAccept">
+		update t_pro_accept
+		<set>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				accept_id = #{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="ischeck != null">
+				isCheck = #{ischeck,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=DATE},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.ProAccept">
+		update
+		t_pro_accept
+		set project_id = #{projectId,jdbcType=INTEGER},
+		accept_id =
+		#{acceptId,jdbcType=INTEGER},
+		isCheck = #{ischeck,jdbcType=INTEGER},
+		create_time = #{createTime,jdbcType=DATE}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+</mapper>

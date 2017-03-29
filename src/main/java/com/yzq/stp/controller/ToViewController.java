@@ -17,4 +17,10 @@ public class ToViewController {
 		return "login";
 	}
 	
+	@RequestMapping("toPublicProject")
+	public String toPublicProject(){
+		return "sendPublic";
+	}
+	
+	
 }

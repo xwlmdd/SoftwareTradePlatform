@@ -1,102 +1,140 @@
 package com.yzq.stp.model;
 
-import java.util.Date;
-
 public class User {
-	private Integer id;
-
-	private String name;
-
-	private String pwd;
-
-	private String email;
-
-	@Override
+    @Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", pwd=" + pwd + ", email=" + email + ", mobile=" + mobile
-				+ ", type=" + type + ", skill=" + skill + ", createTime=" + createTime + ", introduce=" + introduce
-				+ "]";
+				+ ", type=" + type + ", skill=" + skill + ", pic=" + pic + ", address=" + address + ", realName="
+				+ realName + ", qq=" + qq + ", jishu=" + jishu + ", introduce=" + introduce + "]";
 	}
 
-	private String mobile;
+	private Integer id;
 
-	private Integer type;
+    private String name;
 
-	private String skill;
+    private String pwd;
 
-	private Date createTime;
+    private String email;
 
-	private String introduce;
+    private String mobile;
 
-	public Integer getId() {
-		return id;
-	}
+    private Integer type;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private String skill;
 
-	public String getName() {
-		return name;
-	}
+    private String pic;
 
-	public void setName(String name) {
-		this.name = name == null ? null : name.trim();
-	}
+    private String address;
 
-	public String getPwd() {
-		return pwd;
-	}
+    private String realName;
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd == null ? null : pwd.trim();
-	}
+    private String qq;
 
-	public String getEmail() {
-		return email;
-	}
+    private String jishu;
 
-	public void setEmail(String email) {
-		this.email = email == null ? null : email.trim();
-	}
+    private String introduce;
 
-	public String getMobile() {
-		return mobile;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile == null ? null : mobile.trim();
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getType() {
-		return type;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setType(Integer type) {
-		this.type = type;
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public String getSkill() {
-		return skill;
-	}
+    public String getPwd() {
+        return pwd;
+    }
 
-	public void setSkill(String skill) {
-		this.skill = skill == null ? null : skill.trim();
-	}
+    public void setPwd(String pwd) {
+        this.pwd = pwd == null ? null : pwd.trim();
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
 
-	public String getIntroduce() {
-		return introduce;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce == null ? null : introduce.trim();
-	}
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill == null ? null : skill.trim();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic == null ? null : pic.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq == null ? null : qq.trim();
+    }
+
+    public String getJishu() {
+        return jishu;
+    }
+
+    public void setJishu(String jishu) {
+        this.jishu = jishu == null ? null : jishu.trim();
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce == null ? null : introduce.trim();
+    }
 }

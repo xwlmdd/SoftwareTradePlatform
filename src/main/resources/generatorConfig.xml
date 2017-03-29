@@ -37,7 +37,7 @@
 
 
         
-        <table tableName="t_user" domainObjectName="User"
+        <table tableName="t_pro_accept" domainObjectName="ProAccept"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

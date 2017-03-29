@@ -33,11 +33,18 @@ public class UserServiceImpl {
 	 */
 	public User login(User user) {
 		User dbUser = userMapper.queryUser(user);
-		System.out.println("dbUser:"+dbUser);
 		if(dbUser!=null){
 			return dbUser;
 		}
 		return null;
+	}
+
+	public User loadUserInfo(int id) {
+		return userMapper.selectByPrimaryKey(id);
+	}
+
+	public void updateUserInfo(User user) {
+		userMapper.updateByPrimaryKey(user);
 	}
 
 }

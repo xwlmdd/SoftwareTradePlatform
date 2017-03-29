@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzq.stp.mapper.ProjectMapper">
+	<resultMap id="BaseResultMap" type="com.yzq.stp.model.Project">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="send_id" property="sendId" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="yusuan" property="yusuan" jdbcType="VARCHAR" />
+		<result column="send_name" property="sendName" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+		<result column="check_code" property="checkCode" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="com.yzq.stp.model.Project"
+		extends="BaseResultMap">
+		<result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, send_id, title, yusuan, send_name, mobile, qq, email,
+		file_url,
+		check_code, type,
+		create_time
+	</sql>
+	<sql id="Blob_Column_List">
+		`desc`
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from t_project
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="getProject" resultMap="ResultMapWithBLOBs"
+		parameterType="com.yzq.stp.model.Project">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from t_project
+		<where>
+		<if test="sendId != null and sendId!=-999">
+				send_id = #{sendId,jdbcType=INTEGER} 
+			</if>
+			<if test="title != null and title.length>0">
+				and title = #{title,jdbcType=VARCHAR}
+			</if>
+			<if test="yusuan != null and yusuan.length>0">
+				and yusuan = #{yusuan,jdbcType=VARCHAR}
+			</if>
+			<if test="sendName != null and sendName.length>0">
+				and send_name = #{sendName,jdbcType=VARCHAR}
+			</if>
+			<if test="mobile != null and mobile.length>0">
+				and mobile = #{mobile,jdbcType=VARCHAR}
+			</if>
+			<if test="qq != null and qq.length>0">
+				and qq = #{qq,jdbcType=VARCHAR}
+			</if>
+			<if test="email != null and email.length>0">
+				and email = #{email,jdbcType=VARCHAR}
+			</if>
+			<if test="fileUrl != null and fileUrl.length>0">
+				and file_url = #{fileUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="checkCode != null and checkCode!=-999">
+				and check_code = #{checkCode,jdbcType=INTEGER}
+			</if>
+			<if test="type != null and type.length>0">
+				and type = #{type,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null">
+				and create_time = #{createTime,jdbcType=DATE}
+			</if>
+			<if test="desc != null and desc.length>0">
+				and `desc` = #{desc,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+	</select>
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_project
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yzq.stp.model.Project">
+		insert into t_project (
+		send_id, title,
+		yusuan, send_name, mobile,
+		qq, email, file_url,
+		check_code, type, 
+		create_time,
+		`desc`)
+		values (#{sendId,jdbcType=INTEGER},
+		#{title,jdbcType=VARCHAR},
+		#{yusuan,jdbcType=VARCHAR}, 
+		#{sendName,jdbcType=VARCHAR},
+		#{mobile,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{fileUrl,jdbcType=VARCHAR},
+		#{checkCode,jdbcType=INTEGER},
+		#{type,jdbcType=VARCHAR},
+		now(),
+		#{desc,jdbcType=LONGVARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.yzq.stp.model.Project">
+		insert into t_project
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			
+			<if test="sendId != null">
+				send_id,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="yusuan != null">
+				yusuan,
+			</if>
+			<if test="sendName != null">
+				send_name,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="fileUrl != null">
+				file_url,
+			</if>
+			<if test="checkCode != null">
+				check_code,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="desc != null">
+				`desc`
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			
+			<if test="sendId != null">
+				#{sendId,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="yusuan != null">
+				#{yusuan,jdbcType=VARCHAR},
+			</if>
+			<if test="sendName != null">
+				#{sendName,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="fileUrl != null">
+				#{fileUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="checkCode != null">
+				#{checkCode,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				now(),
+			</if>
+			<if test="desc != null">
+				#{desc,jdbcType=LONGVARCHAR}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.Project">
+		update t_project
+		<set>
+			<if test="sendId != null">
+				send_id = #{sendId,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="yusuan != null">
+				yusuan = #{yusuan,jdbcType=VARCHAR},
+			</if>
+			<if test="sendName != null">
+				send_name = #{sendName,jdbcType=VARCHAR},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="fileUrl != null">
+				file_url = #{fileUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="checkCode != null">
+				check_code = #{checkCode,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=DATE},
+			</if>
+			<if test="desc != null">
+				`desc` = #{desc,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yzq.stp.model.Project">
+		update
+		t_project
+		set send_id = #{sendId,jdbcType=INTEGER},
+		title =
+		#{title,jdbcType=VARCHAR},
+		yusuan = #{yusuan,jdbcType=VARCHAR},
+		send_name = #{sendName,jdbcType=VARCHAR},
+		mobile =
+		#{mobile,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
+		file_url = #{fileUrl,jdbcType=VARCHAR},
+		check_code = #{checkCode,jdbcType=INTEGER},
+		type =
+		#{type,jdbcType=VARCHAR},
+		create_time = now(),
+		`desc` =
+		#{desc,jdbcType=LONGVARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.Project">
+		update t_project
+		set send_id = #{sendId,jdbcType=INTEGER},
+		title =
+		#{title,jdbcType=VARCHAR},
+		yusuan = #{yusuan,jdbcType=VARCHAR},
+		send_name = #{sendName,jdbcType=VARCHAR},
+		mobile =
+		#{mobile,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		email =
+		#{email,jdbcType=VARCHAR},
+		file_url = #{fileUrl,jdbcType=VARCHAR},
+		check_code = #{checkCode,jdbcType=INTEGER},
+		type =
+		#{type,jdbcType=VARCHAR},
+		create_time = now(),
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+</mapper>
