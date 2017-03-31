@@ -9,7 +9,7 @@
 		<result column="isCheck" jdbcType="INTEGER" property="ischeck" />
 		<result column="create_time" jdbcType="DATE" property="createTime" />
 	</resultMap>
-	
+
 	<resultMap id="jingBiaoMap" type="com.yzq.stp.model.JingBiao">
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="email" jdbcType="VARCHAR" property="email" />
@@ -21,18 +21,49 @@
 		<result column="jingjia" jdbcType="DOUBLE" property="jingjia" />
 		<result column="create_time" jdbcType="DATE" property="createTime" />
 	</resultMap>
-	
-	<select id="lookJingBiao" resultMap="jingBiaoMap">
-		select u.name,u.email,u.mobile,u.shill,u.real_name,p.project_id,p.accept_id,p.jingjia,p.create_time
-		 	from t_user as u ,t_pro_accept as p
+
+	<resultMap id="projectMap" type="com.yzq.stp.model.ProjectAccept">
+		<result column="project_id" property="projectId" jdbcType="INTEGER" />
+		<result column="jingjia" jdbcType="DOUBLE" property="jingjia" />
+		<result column="ischeck" property="ischeck" jdbcType="INTEGER" />
+		
+		<result column="send_id" property="sendId" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="yusuan" property="yusuan" jdbcType="VARCHAR" />
+		<result column="send_name" property="sendName" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+		<result column="check_code" property="checkCode" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+
+	<select id="loadProject" resultMap="projectMap" >
+		select 
+			p.title,p.yusuan,p.send_name,p.email,p.qq,p.mobile,p.type,a.project_id,p.check_code,
+			a.accept_id,a.project_id,a.ischeck,a.jingjia,a.create_time
+		from t_project as p, t_pro_accept as a 
 		where 
-			p.id = ${projectId,jdbcType=INTEGER}
+			a.accept_id = #{acceptId,jdbcType=INTEGER}
+		and
+			a.project_id = p.id
 		and 
-			u.id = p.accept_id
+			a.ischeck=#{ischeck,jdbcType=INTEGER}
 	</select>
-	
-	<sql id="Base_Column_List">
-		id, project_id, accept_id, jingjia, isCheck, create_time
+
+	<select id="lookJingBiao" resultMap="jingBiaoMap" parameterType="java.lang.Integer">
+		select
+		u.name,u.email,u.mobile,u.skill,u.real_name,p.project_id,p.accept_id,p.jingjia,p.create_time
+		from t_user as u ,t_pro_accept as p
+		where
+		p.id = #{projectId,jdbcType=INTEGER}
+		and
+		u.id = p.accept_id
+	</select>
+
+	<sql id="Base_Column_List"> id, project_id, accept_id, jingjia, isCheck, create_time
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultMap="BaseResultMap">
@@ -41,17 +72,32 @@
 		from t_pro_accept
 		where id = #{id,jdbcType=INTEGER}
 	</select>
+	
+	<select id="hasJingbiao"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_pro_accept
+		where project_id = #{projectId,jdbcType=INTEGER}
+		AND 
+		accept_id = #{acceptId,jdbcType=INTEGER}
+	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from t_pro_accept
+		delete from
+		t_pro_accept
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.yzq.stp.model.ProAccept">
-		insert into t_pro_accept (id, project_id, accept_id,
+		insert into t_pro_accept (id,
+		project_id, accept_id,
 		jingjia, isCheck, create_time
 		)
-		values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
+		values
+		(#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
 		#{acceptId,jdbcType=INTEGER},
-		#{jingjia,jdbcType=DOUBLE}, #{ischeck,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}
+		#{jingjia,jdbcType=DOUBLE},
+		#{ischeck,jdbcType=INTEGER}, now()
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.yzq.stp.model.ProAccept">
@@ -93,7 +139,7 @@
 				#{ischeck,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
-				#{createTime,jdbcType=DATE},
+				now(),
 			</if>
 		</trim>
 	</insert>
@@ -113,103 +159,7 @@
 				isCheck = #{ischeck,jdbcType=INTEGER},
 			</if>
 			<if test="createTime != null">
-				create_time = #{createTime,jdbcType=DATE},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.ProAccept">
-		update t_pro_accept
-		set project_id = #{projectId,jdbcType=INTEGER},
-		accept_id = #{acceptId,jdbcType=INTEGER},
-		jingjia = #{jingjia,jdbcType=DOUBLE},
-		isCheck = #{ischeck,jdbcType=INTEGER},
-		create_time = #{createTime,jdbcType=DATE}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<resultMap id="BaseResultMap" type="com.yzq.stp.model.ProAccept">
-		<id column="id" jdbcType="INTEGER" property="id" />
-		<result column="project_id" jdbcType="INTEGER" property="projectId" />
-		<result column="accept_id" jdbcType="INTEGER" property="acceptId" />
-		<result column="isCheck" jdbcType="INTEGER" property="ischeck" />
-		<result column="create_time" jdbcType="DATE" property="createTime" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		id, project_id, accept_id, isCheck, create_time
-	</sql>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
-		resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from t_pro_accept
-		where id = #{id,jdbcType=INTEGER}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from
-		t_pro_accept
-		where id = #{id,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="com.yzq.stp.model.ProAccept">
-		insert into t_pro_accept (id,
-		project_id, accept_id,
-		isCheck, create_time)
-		values
-		(#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
-		#{acceptId,jdbcType=INTEGER},
-		#{ischeck,jdbcType=INTEGER},
-		#{createTime,jdbcType=DATE})
-	</insert>
-	<insert id="insertSelective" parameterType="com.yzq.stp.model.ProAccept">
-		insert into t_pro_accept
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="projectId != null">
-				project_id,
-			</if>
-			<if test="acceptId != null">
-				accept_id,
-			</if>
-			<if test="ischeck != null">
-				isCheck,
-			</if>
-			<if test="createTime != null">
-				create_time,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="projectId != null">
-				#{projectId,jdbcType=INTEGER},
-			</if>
-			<if test="acceptId != null">
-				#{acceptId,jdbcType=INTEGER},
-			</if>
-			<if test="ischeck != null">
-				#{ischeck,jdbcType=INTEGER},
-			</if>
-			<if test="createTime != null">
-				#{createTime,jdbcType=DATE},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.ProAccept">
-		update t_pro_accept
-		<set>
-			<if test="projectId != null">
-				project_id = #{projectId,jdbcType=INTEGER},
-			</if>
-			<if test="acceptId != null">
-				accept_id = #{acceptId,jdbcType=INTEGER},
-			</if>
-			<if test="ischeck != null">
-				isCheck = #{ischeck,jdbcType=INTEGER},
-			</if>
-			<if test="createTime != null">
-				create_time = #{createTime,jdbcType=DATE},
+				create_time = now(),
 			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}
@@ -220,8 +170,9 @@
 		set project_id = #{projectId,jdbcType=INTEGER},
 		accept_id =
 		#{acceptId,jdbcType=INTEGER},
+		jingjia = #{jingjia,jdbcType=DOUBLE},
 		isCheck = #{ischeck,jdbcType=INTEGER},
-		create_time = #{createTime,jdbcType=DATE}
+		create_time = now()
 		where id =
 		#{id,jdbcType=INTEGER}
 	</update>

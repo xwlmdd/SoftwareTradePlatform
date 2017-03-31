@@ -4,10 +4,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yzq.stp.mapper.CommentMapper;
 import com.yzq.stp.mapper.ProAcceptMapper;
 import com.yzq.stp.mapper.ProjectMapper;
+import com.yzq.stp.model.Comment;
 import com.yzq.stp.model.JingBiao;
+import com.yzq.stp.model.ProAccept;
 import com.yzq.stp.model.Project;
+import com.yzq.stp.model.ProjectAccept;
 
 @Service
 public class ProjectServiceImpl {
@@ -17,6 +21,9 @@ public class ProjectServiceImpl {
 	
 	@Autowired
 	private ProAcceptMapper proAcceptMapper;
+	
+	@Autowired
+	private CommentMapper commentMapper;
 
 	/**
 	 * 发布项目
@@ -45,4 +52,57 @@ public class ProjectServiceImpl {
 	}
 	
 	
+	/**
+	 * 接包方接包总数
+	 * @param acceptId
+	 * @return
+	 */
+	public int selectNum(int acceptId){
+		return commentMapper.selectNum(acceptId);
+	}
+	
+	/**
+	 * 查询评论
+	 * @param acceptId
+	 * @return
+	 */
+	public List<Comment>selectComment(int acceptId){
+		return commentMapper.selectComment(acceptId);
+	}
+	
+	
+	public List<ProjectAccept>loadProject(int acceptId,int ischeck){
+		return proAcceptMapper.loadProject(acceptId, ischeck);
+	}
+	
+	/**
+	 * 竞标
+	 * @param proAccept
+	 * @return 
+	 */
+	public boolean jingbiao(ProAccept proAccept){
+		int num = proAcceptMapper.insert(proAccept);
+		if(num==0){
+			return false;
+		}
+		return true;
+	}
+	
+	public Project lookProject(int projectId){
+		return projectMapper.selectByPrimaryKey(projectId);
+	}
+
+	/**
+	 * 是否已经竞标
+	 * @param projectId
+	 * @param acceptId
+	 * @return
+	 */
+	public boolean hasJingbiao(Integer projectId, Integer acceptId) {
+		ProAccept proAccept = proAcceptMapper.hasJingbiao( projectId,  acceptId);
+		if(proAccept!=null){
+			return true;
+		}
+		return false;
+	}
 }

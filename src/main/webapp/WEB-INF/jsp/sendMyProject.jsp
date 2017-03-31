@@ -30,54 +30,60 @@
 </head>
 <body>
 	<jsp:include page="sendHead.jsp" />
-				<div
-					class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
-					<div class="main-content">
-						<div class="row role-content">
-							<h2>我的项目</h2>
-							<table class="table table-recommend">
-								<thead>
-									<tr>
-										<th scope="col">项目</th>
-										<th scope="col">项目类型</th>
-										<th scope="col">项目状态</th>
-										<th scope="col">发布日期</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:if test="${projectList==null}">
-										<tr>
-											<td colspan="5">没有最新的项目动态</td>
-										</tr>
-									</c:if>
-									<c:if test="${projectList!=null}">
-										<c:forEach  items="${projectList}" var="project">
-											<tr>
-												<td>${project.title }</td>
-												<td>${project.type }</td>
-												<td>
-													<c:if test="${project.checkCode==0}">
+	<div
+		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
+		<div class="main-content">
+			<div class="row role-content">
+				<h2>我的项目</h2>
+				<table class="table table-recommend">
+					<thead>
+						<tr>
+							<th scope="col">项目</th>
+							<th scope="col">项目类型</th>
+							<th scope="col">项目状态</th>
+							<th scope="col">发布日期</th>
+							<th scope="col">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${projectList==null}">
+							<tr>
+								<td colspan="5">没有最新的项目动态</td>
+							</tr>
+						</c:if>
+						<c:if test="${projectList!=null}">
+							<c:forEach items="${projectList}" var="project">
+								<tr>
+									<td>${project.title }</td>
+									<td>${project.type }</td>
+									<td><c:if test="${project.checkCode==0}">
 														未审批
-													</c:if>
-													<c:if test="${project.checkCode==1}">
-														审批通过
-													</c:if>
-													<c:if test="${project.checkCode==2}">
+													</c:if> <c:if test="${project.checkCode==1}">
+														正在竞标
+													</c:if> <c:if test="${project.checkCode==2}">
 														不通过
-													</c:if>
-												</td>
-												<td><fmt:formatDate value="${project.createTime}" pattern="yyyy/MM/dd"/></td>
-											</tr>
-										</c:forEach>
+													</c:if></td>
+									<td><fmt:formatDate value="${project.createTime}"
+											pattern="yyyy/MM/dd" /></td>
+									<c:if test="${project.checkCode==1}">
+										<td><a
+											href="<%=request.getContextPath()%>/stp/lookJingBiao?projectId=${project.id}">查看竞标情况</a>
+										</td>
 									</c:if>
-								</tbody>
-							</table>
-						</div>
-
-					</div>
-				</div>
+									<c:if test="${project.checkCode!=1}">
+										<td>暂无操作</td>
+									</c:if>
+								</tr>
+							</c:forEach>
+						</c:if>
+					</tbody>
+				</table>
 			</div>
+
 		</div>
+	</div>
+	</div>
+	</div>
 	</div>
 	<!-- /container -->
 	<style>

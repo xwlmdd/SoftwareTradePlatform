@@ -12,6 +12,7 @@
 		<result column="email" property="email" jdbcType="VARCHAR" />
 		<result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
 		<result column="check_code" property="checkCode" jdbcType="INTEGER" />
+		<result column="zhouqi" property="zhouqi" jdbcType="VARCHAR" />
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="DATE" />
 	</resultMap>
@@ -22,7 +23,7 @@
 	<sql id="Base_Column_List">
 		id, send_id, title, yusuan, send_name, mobile, qq, email,
 		file_url,
-		check_code, type,
+		check_code, type,zhouqi,
 		create_time
 	</sql>
 	<sql id="Blob_Column_List">
@@ -37,7 +38,7 @@
 		from t_project
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-	
+
 	<select id="getProject" resultMap="ResultMapWithBLOBs"
 		parameterType="com.yzq.stp.model.Project">
 		select
@@ -46,8 +47,8 @@
 		<include refid="Blob_Column_List" />
 		from t_project
 		<where>
-		<if test="sendId != null and sendId!=-999">
-				send_id = #{sendId,jdbcType=INTEGER} 
+			<if test="sendId != null and sendId!=-999">
+				send_id = #{sendId,jdbcType=INTEGER}
 			</if>
 			<if test="title != null and title.length>0">
 				and title = #{title,jdbcType=VARCHAR}
@@ -76,6 +77,9 @@
 			<if test="type != null and type.length>0">
 				and type = #{type,jdbcType=VARCHAR}
 			</if>
+			<if test="zhouqi != null and zhouqi.length>0">
+				and zhouqi = #{zhouqi,jdbcType=VARCHAR}
+			</if>
 			<if test="createTime != null">
 				and create_time = #{createTime,jdbcType=DATE}
 			</if>
@@ -84,8 +88,8 @@
 			</if>
 		</where>
 	</select>
-	
-	
+
+
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from
 		t_project
@@ -96,12 +100,12 @@
 		send_id, title,
 		yusuan, send_name, mobile,
 		qq, email, file_url,
-		check_code, type, 
+		check_code, type,zhouqi,
 		create_time,
 		`desc`)
 		values (#{sendId,jdbcType=INTEGER},
 		#{title,jdbcType=VARCHAR},
-		#{yusuan,jdbcType=VARCHAR}, 
+		#{yusuan,jdbcType=VARCHAR},
 		#{sendName,jdbcType=VARCHAR},
 		#{mobile,jdbcType=VARCHAR},
 		#{qq,jdbcType=VARCHAR},
@@ -109,6 +113,7 @@
 		#{fileUrl,jdbcType=VARCHAR},
 		#{checkCode,jdbcType=INTEGER},
 		#{type,jdbcType=VARCHAR},
+		#{zhouqi,jdbcType=VARCHAR},
 		now(),
 		#{desc,jdbcType=LONGVARCHAR}
 		)
@@ -116,7 +121,7 @@
 	<insert id="insertSelective" parameterType="com.yzq.stp.model.Project">
 		insert into t_project
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			
+
 			<if test="sendId != null">
 				send_id,
 			</if>
@@ -147,6 +152,9 @@
 			<if test="type != null">
 				type,
 			</if>
+			<if test="zhouqi != null">
+				zhouqi,
+			</if>
 			<if test="createTime != null">
 				create_time,
 			</if>
@@ -155,7 +163,7 @@
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			
+
 			<if test="sendId != null">
 				#{sendId,jdbcType=INTEGER},
 			</if>
@@ -185,6 +193,9 @@
 			</if>
 			<if test="type != null">
 				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="zhouqi != null">
+				#{zhouqi,jdbcType=VARCHAR},
 			</if>
 			<if test="createTime != null">
 				now(),
@@ -227,6 +238,9 @@
 			<if test="type != null">
 				type = #{type,jdbcType=VARCHAR},
 			</if>
+			<if test="zhouqi != null">
+				zhouqi = #{zhouqi,jdbcType=VARCHAR},
+			</if>
 			<if test="createTime != null">
 				create_time = #{createTime,jdbcType=DATE},
 			</if>
@@ -253,6 +267,8 @@
 		check_code = #{checkCode,jdbcType=INTEGER},
 		type =
 		#{type,jdbcType=VARCHAR},
+		zhouqi =
+		#{zhouqi,jdbcType=VARCHAR},
 		create_time = now(),
 		`desc` =
 		#{desc,jdbcType=LONGVARCHAR}
@@ -274,6 +290,8 @@
 		check_code = #{checkCode,jdbcType=INTEGER},
 		type =
 		#{type,jdbcType=VARCHAR},
+		zhouqi =
+		#{zhouqi,jdbcType=VARCHAR},
 		create_time = now(),
 		where id =
 		#{id,jdbcType=INTEGER}

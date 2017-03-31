@@ -102,7 +102,7 @@
 								<div class="col-sm-5 col-md-5 col-lg-5" style="padding-right: 0">
 									<div class="input-group">
 										<span class="input-group-addon"><i></i></span> <input
-											class="form-control" vaule="${u.qq }" name="qq"
+											class="form-control" value="${u.qq }" name="qq"
 											placeholder="QQ" type="text">
 									</div>
 								</div>

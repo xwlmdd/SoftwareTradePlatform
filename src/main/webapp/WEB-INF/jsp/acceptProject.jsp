@@ -29,46 +29,54 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<jsp:include page="sendHead.jsp" />
+	<jsp:include page="acceptHead.jsp" />
 	<div
 		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
 		<div class="main-content">
 			<div class="row role-content">
-				<h2>我的项目:${project.title};预算${project.yusuan}</h2>
+				<h2>我的项目</h2>
+				<br>
+				<h2><font color="red">${message}</font></h2>
 				<table class="table table-recommend">
 					<thead>
 						<tr>
-							<th scope="col">竞标人名称</th>
-							<th scope="col">擅长领域</th>
+							<th scope="col">项目</th>
+							<th scope="col">项目类型</th>
+							<th scope="col">项目状态</th>
+							<th scope="col">发布日期</th>
 							<th scope="col">报价</th>
-							<th scope="col">邮箱</th>
-							<th scope="col">电话</th>
-							<th scope="col">日期</th>
-							<th scope="col">查看详细情况</th>
-							<th scope="col">选择该接包人</th>
+							<th scope="col">发布人邮箱</th>
+							<th scope="col">发布人电话</th>
+							<th scope="col">发布人qq</th>
+							<th scope="col">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:if test="${jingBiaoList==null}">
+						<c:if test="${projectList==null}">
 							<tr>
 								<td colspan="5">没有最新的项目动态</td>
 							</tr>
 						</c:if>
-						<c:if test="${jingBiaoList!=null}">
-							<c:forEach items="${jingBiaoList}" var="jingBiao">
+						<c:if test="${projectList!=null}">
+							<c:forEach items="${projectList}" var="project">
 								<tr>
-									<td>${jingBiao.name}</td>
-									<td>${jingBiao.skill}</td>
-									<td>${jingBiao.jingjia}</td>
-									<td>${jingBiao.email}</td>
-									<td>${jingBiao.mobile}</td>
-									<td><fmt:formatDate value="${jingBiao.createTime}"
+									<td>${project.title }</td>
+									<td>${project.type }</td>
+									<td><c:if test="${project.ischeck==0}">
+														正在竞标
+													</c:if> <c:if test="${project.ischeck==1}">
+														正在开发
+													</c:if> <c:if test="${project.ischeck==2}">
+														已完成
+													</c:if></td>
+									<td><fmt:formatDate value="${project.createTime}"
 											pattern="yyyy/MM/dd" /></td>
+									<td>${project.jingjia }</td>
+									<td>${project.email }</td>
+									<td>${project.mobile }</td>
+									<td>${project.qq }</td>
 									<td><a
-										href="<%=request.getContextPath()%>/stp/acceptDetail?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">查看竞标人详细情况</a>
-									</td>
-									<td><a
-										href="<%=request.getContextPath()%>/stp/choose?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">确定</a>
+										href="<%=request.getContextPath()%>/stp/lookProject?projectId=${project.projectId}&type=${project.ischeck}">查看项目</a>
 									</td>
 								</tr>
 							</c:forEach>

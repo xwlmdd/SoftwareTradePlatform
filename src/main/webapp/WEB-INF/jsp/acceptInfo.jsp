@@ -27,219 +27,85 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<header class="navbar">
-		<div class="container top">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<nav class="navbar" role="navigation">
-						<div class="navbar-header">
-							<a class="logo" href="http://www.sxsoft.com/"><img
-								src="<%=request.getContextPath()%>/images/logo.png"
-								alt="软件项目交易网"></a>
-						</div>
-						<div class="navbar-meun">
-							<ul class="list-unstyled">
-								<li><a href="http://www.sxsoft.com/page/project">寻找项目</a></li>
-								<li><a href="http://www.sxsoft.com/page/user">接包达人</a></li>
-								<li><a href="http://www.sxsoft.com/page/article">精选文章</a></li>
-							</ul>
-						</div>
-						<div class="nav navbar-nav navbar-user">
-							<ul class="list-unstyled">
-								<li><span>${u.name}|</span></li>
-								<li><a
-									href="<%=request.getContextPath()%>/stp/logout">退出</a></li>
-							</ul>
-						</div>
+	<jsp:include page="acceptHead.jsp" />
+	<div
+		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
+		<div class="main-content">
 
-					</nav>
+			<div class="row role-intro">
+				<div class="col-sm-2 col-md-2 role-intro-slider">
+					<div class="defaultimg">
+						<div class="settingimg">
+							<a href="http://www.sxsoft.com/upload_img">更换头像</a>
+						</div>
+						<img src="<%=request.getContextPath()%>/images/defaultimg_108.png"
+							title="xwlmdd" alt="xwlmdd" class="img-rounded">
+					</div>
+					<div class="material_txt">
+						<a class="btn btn-success"
+							href="<%=request.getContextPath()%>/stp/toUpdateUserInfo?id=${u.id}&type=0">修改资料</a>
+					</div>
+				</div>
+
+				<div class="col-sm-10 col-md-10 role-introl-content account">
+					<div class="row role-user-info">
+						<h3 class="col-sm-4 col-md-4 nopadding">
+							<a href="http://www.sxsoft.com/user/history/285177"
+								class="nowrap col-sm-12 text-left">${u.name}</a>
+						</h3>
+					</div>
+					<div class="hide"></div>
+
 				</div>
 			</div>
-		</div>
-	</header>
-	<div class="row main-user">
-		<div class="container main-user-container">
-			<div class="row main-user-container-row">
-				<div
-					class="col-xs-3 col-sm-3 col-md-3 nopadding-left main-user-slider">
-					<div class="role">
-						<a href="http://www.sxsoft.com/my/user">接包方个人中心</a>
-					</div>
-					<ul class="list-unstyled onelevel">
-						<li><span>项目管理</span>
-							<ul class="list-unstyled twolevel">
-								<li><a href="http://www.sxsoft.com/my/project/myproject">竞标一览</a>
-								</li>
-								<li><a href="http://www.sxsoft.com/my/bid/histroybids">正在开发项目</a>
-								</li>
-								<li><a href="http://www.sxsoft.com/my/bid/histroybids">已完成项目</a>
-								</li>
-							</ul></li>
-						<li><span>推荐项目</span>
-							<ul class="twolevel">
-								<li><a href="http://www.sxsoft.com/my/collection/project">推荐项目</a>
-								</li>
-							</ul></li>
-					</ul>
+
+			<div id="dialog-upload" class="hide">
+				<a><input type="hidden" id="formid"></a>
+				<div class="warnbox">
+					<form action="http://www.sxsoft.com/my/user/upload" method="post"
+						id="formID" enctype="multipart/form-data">
+						<div class="upload_window">
+							<input type="file" name="filename" id="fileToUpload" class=""
+								value="" style="width: 225px;"> <input type="submit"
+								class="btn" name="ok_new" value="上传头像">
+							<p>仅限上传JPG、GIF、PNG文件，100KB以下</p>
+						</div>
+					</form>
 				</div>
-				<div
-					class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
-					<div class="main-content">
+			</div>
 
-						<div class="row role-intro">
-							<div class="col-sm-2 col-md-2 role-intro-slider">
-								<div class="defaultimg">
-									<div class="settingimg">
-										<a href="http://www.sxsoft.com/upload_img">更换头像</a>
-									</div>
-									<img
-										src="<%=request.getContextPath()%>/images/defaultimg_108.png"
-										title="xwlmdd" alt="xwlmdd" class="img-rounded">
-								</div>
-								<div class="material_txt">
-									<a class="btn btn-success"
-										href="http://www.sxsoft.com/my/user/modifydetail">修改资料</a> 
-								</div>
-							</div>
+			<div class="main-content">
+				<div class="col-md-12 nopadding">
+					<div class="col-sm-8 col-md-8 col-lg-8 nopadding">
+						<div class="refound-account fund-account board">
+							<form class="form-horizontal" id="formID"
+								action="<%=request.getContextPath()%>/stp/updateUserInfo">
 
-							<div class="col-sm-10 col-md-10 role-introl-content account">
-								<div class="row role-user-info">
-									<h3 class="col-sm-4 col-md-4 nopadding">
-										<a href="http://www.sxsoft.com/user/history/285177"
-											class="nowrap col-sm-12 text-left">${u.name}</a>
-									</h3>
-								</div>
-								<div class="row role-user-account">
-									<div class="row col-sm-4 col-md-4 nopadding">
-										<span class="col-xs-5 col-sm-6 col-md-5">账户总额</span> <strong
-											class="col-sm-6 col-xs-7 col-md-7"> 0.00 </strong>
-									</div>
+								<div class="form-group">
+									<span class="red">*E-mail：${u.email}</span>
 								</div>
 
-								<div class="hide"></div>
-
-								<ul class="row user-role-message">
-									<li class="col-sm-2 col-md-2 label-mark"><a
-										href="http://www.sxsoft.com/my/project/myproject"
-										target="_blank">0</a> <span>承接项目</span></li>
-									<li class="col-sm-2 col-md-2"><a
-										href="http://www.sxsoft.com/my/project/myproject"
-										target="_blank">0</a> <span>完工项目</span></li>
-									<li class="col-sm-2 col-md-2"><a
-										href="http://www.sxsoft.com/my/project/myproject"
-										target="_blank">0</a> <span>竞标数</span></li>
-									<li class="col-sm-2 col-md-2"><a
-										href="javascript:void(0);">0.00</a> <span>总收入</span></li>
-									<li class="col-sm-2 col-md-2 label-mark"><a
-										href="http://www.sxsoft.com/my/project/myproject"
-										target="_blank">0</a> <span>开发中项目</span></li>
-									<li class="col-sm-2 col-md-2"><a
-										href="javascript:void(0);">0</a> <span>信誉积分</span></li>
-								</ul>
-
-								<div class="row my-label">
-									<label for="nav">擅长领域</label>
-									<ul class="nav nav-bar nav-pills">
-										<li role="presentation"></li>
-									</ul>
+								<div class="form-group">
+									<span class="red">*联系人：${u.realName}</span>
 								</div>
-							</div>
-						</div>
 
-						<div id="dialog-upload" class="hide">
-							<a><input type="hidden" id="formid"></a>
-							<div class="warnbox">
-								<form action="http://www.sxsoft.com/my/user/upload"
-									method="post" id="formID" enctype="multipart/form-data">
-									<div class="upload_window">
-										<input type="file" name="filename" id="fileToUpload" class=""
-											value="" style="width: 225px;"> <input type="submit"
-											class="btn" name="ok_new" value="上传头像">
-										<p>仅限上传JPG、GIF、PNG文件，100KB以下</p>
-									</div>
-								</form>
-							</div>
-						</div>
+								<div class="form-group">
+									<span class="red">*联系手机：${u.mobile}</span>
+								</div>
 
-						<div class="row role-content">
-
-							<h2>待处理的项目动态</h2>
-							<table class="table table-recommend">
-								<thead>
-									<tr>
-										<th scope="col">项目</th>
-										<th scope="col">项目状态</th>
-										<th scope="col">发布日期</th>
-										<th scope="col">项目详情</th>
-										<th scope="col">操作</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<tr>
-										<td colspan="5">没有最新的项目动态</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-
-						<div class="row role-content-advance">
-							<h2>相关项目推荐</h2>
-							<table class="table table-recommend">
-								<tbody>
-									<tr>
-										<td class="recommend-title"><a
-											href="http://www.sxsoft.com/project/show/78061"
-											title="航空安全系统开发" target="_blank">航空安全系统开发</a></td>
-										<td>2017-03-28发布</td>
-										<td>预算待商议</td>
-										<td>已有2竞标</td>
-										<td>9天后截止竞标</td>
-										<td><a href="http://www.sxsoft.com/project/show/78061"
-											class="btn btn-success btn-sm">&nbsp;&nbsp;我要竞标&nbsp;&nbsp;</a></td>
-									</tr>
-									<tr>
-										<td class="recommend-title"><a
-											href="http://www.sxsoft.com/project/show/78060"
-											title="换衣服的APP" target="_blank">换衣服的APP</a></td>
-										<td>2017-03-28发布</td>
-										<td>预算待商议</td>
-										<td>已有4竞标</td>
-										<td>9天后截止竞标</td>
-										<td><a href="http://www.sxsoft.com/project/show/78060"
-											class="btn btn-success btn-sm">&nbsp;&nbsp;我要竞标&nbsp;&nbsp;</a></td>
-									</tr>
-									<tr>
-										<td class="recommend-title"><a
-											href="http://www.sxsoft.com/project/show/78059"
-											title="道岔视频缺口监测" target="_blank">道岔视频缺口监测</a></td>
-										<td>2017-03-28发布</td>
-										<td>预算10万以上</td>
-										<td>已有1竞标</td>
-										<td>9天后截止竞标</td>
-										<td><a href="http://www.sxsoft.com/project/show/78059"
-											class="btn btn-success btn-sm">&nbsp;&nbsp;我要竞标&nbsp;&nbsp;</a></td>
-									</tr>
-									<tr>
-										<td class="recommend-title"><a
-											href="http://www.sxsoft.com/project/show/78058" title="网站建设"
-											target="_blank">网站建设</a></td>
-										<td>2017-03-28发布</td>
-										<td>预算1千~5千</td>
-										<td>暂无竞标</td>
-										<td>9天后截止竞标</td>
-										<td><a href="http://www.sxsoft.com/project/show/78058"
-											class="btn btn-success btn-sm">&nbsp;&nbsp;我要竞标&nbsp;&nbsp;</a></td>
-									</tr>
-								</tbody>
-							</table>
+								<div class="form-group">
+									<span class="red">*擅长：${u.skill}</span>
+								</div>
+								<div class="form-group">
+									<span class="red">*技能：${u.jishu}</span>
+								</div>
+								<div class="form-group">
+									<span class="red">*简介：${u.introduce}</span>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
-				<script type="text/javascript">
-					$(function() {
-					});
-				</script>
 			</div>
 		</div>
 	</div>
@@ -329,8 +195,5 @@
 			$("#authcode").val('');
 		}
 	</script>
-
-
-
 </body>
 </html>

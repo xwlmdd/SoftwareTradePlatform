@@ -3,146 +3,158 @@ package com.yzq.stp.model;
 import java.util.Date;
 
 public class Project {
-    @Override
+
+	@Override
 	public String toString() {
 		return "Project [id=" + id + ", sendId=" + sendId + ", title=" + title + ", yusuan=" + yusuan + ", sendName="
 				+ sendName + ", mobile=" + mobile + ", qq=" + qq + ", email=" + email + ", fileUrl=" + fileUrl
-				+ ", checkCode=" + checkCode + ", type=" + type + ", createTime=" + createTime + ", desc=" + desc + "]";
+				+ ", checkCode=" + checkCode + ", type=" + type + ", zhouqi=" + zhouqi + ", createTime=" + createTime
+				+ ", desc=" + desc + "]";
 	}
 
 	private Integer id;
 
-    private Integer sendId;
+	private Integer sendId;
 
-    private String title;
+	private String title;
 
-    private String yusuan;
+	private String yusuan;
 
-    private String sendName;
+	private String sendName;
 
-    private String mobile;
+	private String mobile;
 
-    private String qq;
+	private String qq;
 
-    private String email;
+	private String email;
 
-    private String fileUrl;
+	private String fileUrl;
 
-    private Integer checkCode;
+	private Integer checkCode;
 
-    private String type;
+	private String type;
 
-    private Date createTime;
+	private String zhouqi;
 
-    private String desc;
+	private Date createTime;
 
-    public Project(){
-    	//为了查询传送条件的时候不传0
-    	this.sendId = -999;
-    	this.checkCode =-999;
-    }
-    
-    public Integer getId() {
-        return id;
-    }
+	private String desc;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getZhouqi() {
+		return zhouqi;
+	}
 
-    public Integer getSendId() {
-        return sendId;
-    }
+	public void setZhouqi(String zhouqi) {
+		this.zhouqi = zhouqi;
+	}
 
-    public void setSendId(Integer sendId) {
-        this.sendId = sendId;
-    }
+	public Project() {
+		// 为了查询传送条件的时候不0
+		this.sendId = -999;
+		this.checkCode = -999;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getYusuan() {
-        return yusuan;
-    }
+	public Integer getSendId() {
+		return sendId;
+	}
 
-    public void setYusuan(String yusuan) {
-        this.yusuan = yusuan == null ? null : yusuan.trim();
-    }
+	public void setSendId(Integer sendId) {
+		this.sendId = sendId;
+	}
 
-    public String getSendName() {
-        return sendName;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public void setSendName(String sendName) {
-        this.sendName = sendName == null ? null : sendName.trim();
-    }
+	public void setTitle(String title) {
+		this.title = title == null ? null : title.trim();
+	}
 
-    public String getMobile() {
-        return mobile;
-    }
+	public String getYusuan() {
+		return yusuan;
+	}
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
+	public void setYusuan(String yusuan) {
+		this.yusuan = yusuan == null ? null : yusuan.trim();
+	}
 
-    public String getQq() {
-        return qq;
-    }
+	public String getSendName() {
+		return sendName;
+	}
 
-    public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
-    }
+	public void setSendName(String sendName) {
+		this.sendName = sendName == null ? null : sendName.trim();
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getMobile() {
+		return mobile;
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public void setMobile(String mobile) {
+		this.mobile = mobile == null ? null : mobile.trim();
+	}
 
-    public String getFileUrl() {
-        return fileUrl;
-    }
+	public String getQq() {
+		return qq;
+	}
 
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl == null ? null : fileUrl.trim();
-    }
+	public void setQq(String qq) {
+		this.qq = qq == null ? null : qq.trim();
+	}
 
-    public Integer getCheckCode() {
-        return checkCode;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setCheckCode(Integer checkCode) {
-        this.checkCode = checkCode;
-    }
+	public void setEmail(String email) {
+		this.email = email == null ? null : email.trim();
+	}
 
-    public String getType() {
-        return type;
-    }
+	public String getFileUrl() {
+		return fileUrl;
+	}
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
-    }
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl == null ? null : fileUrl.trim();
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Integer getCheckCode() {
+		return checkCode;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setCheckCode(Integer checkCode) {
+		this.checkCode = checkCode;
+	}
 
-    public String getDesc() {
-        return desc;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
-    }
+	public void setType(String type) {
+		this.type = type == null ? null : type.trim();
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc == null ? null : desc.trim();
+	}
 }

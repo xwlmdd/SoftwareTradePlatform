@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>发包方个人中心</title>
+<title>接包方个人中心</title>
 <link rel="archives" title="软件项目交易网" href="http://www.sxsoft.com/">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font-awesome.min.css">
@@ -34,16 +35,16 @@
 					<nav class="navbar" role="navigation">
 						<div class="navbar-header">
 							<a class="logo" href="http://www.sxsoft.com/"><img
-								src="<%=request.getContextPath()%>/images/logo.png"></a>
+								src="<%=request.getContextPath()%>/images/logo.png"
+								alt="软件项目交易网"></a>
 						</div>
 						<div class="navbar-meun">
 							<ul class="list-unstyled">
-								<li><a
-									href="<%=request.getContextPath()%>/stp/toPublicProject">发布项目</a></li>
+								<li><a href="http://www.sxsoft.com/page/project">寻找项目</a></li>
 								<li><a href="http://www.sxsoft.com/page/user">接包达人</a></li>
 							</ul>
 						</div>
-						<div class="navbar-meun">
+						<div class="nav navbar-nav navbar-user">
 							<ul>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
@@ -62,33 +63,41 @@
 			<div class="row main-user-container-row">
 				<div
 					class="col-xs-3 col-sm-3 col-md-3 nopadding-left main-user-slider">
-					<div class="role"
-						style="width: 225px; height: 37px; padding-top: 10px">发包方个人中心</div>
+					<div class="role">
+						<a href="http://www.sxsoft.com/my/user">接包方个人中心</a>
+					</div>
 					<ul class="list-unstyled onelevel">
 						<li><span>个人中心</span>
 							<ul class="list-unstyled twolevel">
 								<li><a
-									href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=1">我的资料</a>
+									href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=0">我的资料</a>
 								</li>
 								<li><a
-									href="<%=request.getContextPath()%>/stp/toUpdateUserInfo?id=${u.id}&type=1">更新信息</a>
+									href="<%=request.getContextPath()%>/stp/toUpdateUserInfo?id=${u.id}&type=0">更新信息</a>
 								</li>
 							</ul></li>
 						<li><span>项目管理</span>
 							<ul class="list-unstyled twolevel">
 								<li><a
-									href="<%=request.getContextPath()%>/stp/toPublicProject">发布项目</a>
+									href="<%=request.getContextPath()%>/stp/loadProject?acceptId=${u.id}&ischeck=0">正在竞标项目</a>
 								</li>
 								<li><a
-									href="<%=request.getContextPath()%>/stp/myCheckProject">项目审核、竞标情况</a>
+									href="<%=request.getContextPath()%>/stp/loadProject?acceptId=${u.id}&ischeck=1">正在开发项目</a>
 								</li>
 								<li><a
-									href="<%=request.getContextPath()%>/stp/projectManage">项目管理</a>
+									href="<%=request.getContextPath()%>/stp/loadProject?acceptId=${u.id}&ischeck=2">已完成项目</a>
 								</li>
 							</ul></li>
-						<li><span>我要发布项目</span>
+
+						<li><span>推荐项目</span>
 							<ul class="twolevel">
-								<li><a href="<%=request.getContextPath()%>/stp/toPublicProject">我要发布项目</a>
+								<li><a
+									href="<%=request.getContextPath()%>/stp/loadProject?skill={u.skill}">推荐项目</a>
+								</li>
+							</ul></li>
+						<li><span>我要竞标</span>
+							<ul class="twolevel">
+								<li><a href="<%=request.getContextPath()%>/stp/loadIndexProject">我要竞标</a>
 								</li>
 							</ul></li>
 					</ul>

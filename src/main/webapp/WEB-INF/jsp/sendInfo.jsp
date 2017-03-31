@@ -28,75 +28,76 @@
 </head>
 <body>
 	<jsp:include page="sendHead.jsp" />
-				<div
-					class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
-					<div class="main-content">
+	<div
+		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
+		<div class="main-content">
 
-						<div class="row role-intro">
-							<div class="col-sm-2 col-md-2 role-intro-slider">
-								<div class="defaultimg">
-									<div class="settingimg">
-										<a href="http://www.sxsoft.com/upload_img">更换头像</a>
-									</div>
-									<img
-										src="<%=request.getContextPath()%>/images/defaultimg_108.png"
-										title="xwlmdd" alt="xwlmdd" class="img-rounded">
-								</div>
-								<div class="material_txt">
-									<a class="btn btn-success"
-										href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=1">修改资料</a>
-								</div>
-							</div>
-
-							<div class="col-sm-10 col-md-10 role-introl-content account">
-								<div class="row role-user-info">
-									<h3 class="col-sm-4 col-md-4 nopadding">
-										<a href="http://www.sxsoft.com/user/history/285177"
-											class="nowrap col-sm-12 text-left">${u.name}</a>
-									</h3>
-								</div>
-								<div class="hide"></div>
-
-							</div>
+			<div class="row role-intro">
+				<div class="col-sm-2 col-md-2 role-intro-slider">
+					<div class="defaultimg">
+						<div class="settingimg">
+							<a href="http://www.sxsoft.com/upload_img">更换头像</a>
 						</div>
+						<img src="<%=request.getContextPath()%>/images/defaultimg_108.png"
+							title="xwlmdd" alt="xwlmdd" class="img-rounded">
+					</div>
+					<div class="material_txt">
+						<a class="btn btn-success"
+							href="<%=request.getContextPath()%>/stp/toUpdateUserInfo?id=${u.id}&type=1">修改资料</a>
+					</div>
+				</div>
 
-						<div id="dialog-upload" class="hide">
-							<a><input type="hidden" id="formid"></a>
-							<div class="warnbox">
-								<form action="http://www.sxsoft.com/my/user/upload"
-									method="post" id="formID" enctype="multipart/form-data">
-									<div class="upload_window">
-										<input type="file" name="filename" id="fileToUpload" class=""
-											value="" style="width: 225px;"> <input type="submit"
-											class="btn" name="ok_new" value="上传头像">
-										<p>仅限上传JPG、GIF、PNG文件，100KB以下</p>
-									</div>
-								</form>
-							</div>
+				<div class="col-sm-10 col-md-10 role-introl-content account">
+					<div class="row role-user-info">
+						<h3 class="col-sm-4 col-md-4 nopadding">
+							<a href="http://www.sxsoft.com/user/history/285177"
+								class="nowrap col-sm-12 text-left">${u.name}</a>
+						</h3>
+					</div>
+					<div class="hide"></div>
+
+				</div>
+			</div>
+
+			<div id="dialog-upload" class="hide">
+				<a><input type="hidden" id="formid"></a>
+				<div class="warnbox">
+					<form action="http://www.sxsoft.com/my/user/upload" method="post"
+						id="formID" enctype="multipart/form-data">
+						<div class="upload_window">
+							<input type="file" name="filename" id="fileToUpload" class=""
+								value="" style="width: 225px;"> <input type="submit"
+								class="btn" name="ok_new" value="上传头像">
+							<p>仅限上传JPG、GIF、PNG文件，100KB以下</p>
 						</div>
+					</form>
+				</div>
+			</div>
 
-						<div class="row role-content">
+			<div class="main-content">
+				<div class="col-md-12 nopadding">
+					<div class="col-sm-8 col-md-8 col-lg-8 nopadding">
+						<div class="refound-account fund-account board">
+							<form class="form-horizontal" id="formID"
+								action="<%=request.getContextPath()%>/stp/updateUserInfo">
 
-							<h2>正在审批项目状态</h2>
-							<table class="table table-recommend">
-								<thead>
-									<tr>
-										<th scope="col">项目</th>
-										<th scope="col">项目状态</th>
-										<th scope="col">发布日期</th>
-										<th scope="col">项目详情</th>
-										<th scope="col">操作</th>
-									</tr>
-								</thead>
-								<tbody>
+								<div class="form-group">
+									<span class="red">*E-mail：${u.email}</span>
+								</div>
 
-									<tr>
-										<td colspan="5">没有最新的项目动态</td>
-									</tr>
-								</tbody>
-							</table>
+								<div class="form-group">
+									<span class="red">*联系人：${u.realName}</span>
+								</div>
+
+								<div class="form-group">
+									<span class="red">*联系手机：${u.mobile}</span>
+								</div>
+
+								<div class="form-group">
+									<span class="red">*联系QQ：${u.qq}</span>
+								</div>
+							</form>
 						</div>
-
 					</div>
 				</div>
 			</div>

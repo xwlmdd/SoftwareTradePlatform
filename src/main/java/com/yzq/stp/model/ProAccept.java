@@ -19,7 +19,13 @@ public class ProAccept {
         return id;
     }
 
-    public void setId(Integer id) {
+    @Override
+	public String toString() {
+		return "ProAccept [id=" + id + ", projectId=" + projectId + ", acceptId=" + acceptId + ", jingjia=" + jingjia
+				+ ", ischeck=" + ischeck + ", createTime=" + createTime + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

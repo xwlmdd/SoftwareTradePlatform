@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzq.stp.mapper.CommentMapper">
+	<resultMap id="BaseResultMap" type="com.yzq.stp.model.Comment">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="project_title" property="projectTitle"
+			jdbcType="VARCHAR" />
+		<result column="project_id" property="projectId" jdbcType="INTEGER" />
+		<result column="accept_id" property="acceptId" jdbcType="INTEGER" />
+		<result column="quality" property="quality" jdbcType="INTEGER" />
+		<result column="speed" property="speed" jdbcType="INTEGER" />
+		<result column="zhuanye" property="zhuanye" jdbcType="INTEGER" />
+		<result column="fuwu" property="fuwu" jdbcType="INTEGER" />
+		<result column="comment" property="comment" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="DATE" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id, project_title, project_id, accept_id, quality, speed, zhuanye, fuwu,
+		comment,
+		create_time
+	</sql>
+	
+	<select id="selectComment" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_comment
+		where accept_id = #{acceptId,jdbcType=INTEGER}
+	</select>
+	
+	
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_comment
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectNum" resultType="java.lang.Integer"
+		parameterType="java.lang.Integer">
+		select
+		count(*)
+		from t_comment
+		where accept_id = #{acceptId,jdbcType=INTEGER}
+	</select>
+	
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_comment
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yzq.stp.model.Comment">
+		insert into t_comment (id, project_title, project_id,
+		accept_id, quality, speed,
+		zhuanye, fuwu, comment,
+		create_time)
+		values (#{id,jdbcType=INTEGER}, #{projectTitle,jdbcType=VARCHAR},
+		#{projectId,jdbcType=INTEGER},
+		#{acceptId,jdbcType=INTEGER}, #{quality,jdbcType=INTEGER}, #{speed,jdbcType=INTEGER},
+		#{zhuanye,jdbcType=INTEGER}, #{fuwu,jdbcType=INTEGER},
+		#{comment,jdbcType=VARCHAR},
+		#{createTime,jdbcType=DATE})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yzq.stp.model.Comment">
+		insert into t_comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="projectTitle != null">
+				project_title,
+			</if>
+			<if test="projectId != null">
+				project_id,
+			</if>
+			<if test="acceptId != null">
+				accept_id,
+			</if>
+			<if test="quality != null">
+				quality,
+			</if>
+			<if test="speed != null">
+				speed,
+			</if>
+			<if test="zhuanye != null">
+				zhuanye,
+			</if>
+			<if test="fuwu != null">
+				fuwu,
+			</if>
+			<if test="comment != null">
+				comment,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="projectTitle != null">
+				#{projectTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				#{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="quality != null">
+				#{quality,jdbcType=INTEGER},
+			</if>
+			<if test="speed != null">
+				#{speed,jdbcType=INTEGER},
+			</if>
+			<if test="zhuanye != null">
+				#{zhuanye,jdbcType=INTEGER},
+			</if>
+			<if test="fuwu != null">
+				#{fuwu,jdbcType=INTEGER},
+			</if>
+			<if test="comment != null">
+				#{comment,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.Comment">
+		update t_comment
+		<set>
+			<if test="projectTitle != null">
+				project_title = #{projectTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				accept_id = #{acceptId,jdbcType=INTEGER},
+			</if>
+			<if test="quality != null">
+				quality = #{quality,jdbcType=INTEGER},
+			</if>
+			<if test="speed != null">
+				speed = #{speed,jdbcType=INTEGER},
+			</if>
+			<if test="zhuanye != null">
+				zhuanye = #{zhuanye,jdbcType=INTEGER},
+			</if>
+			<if test="fuwu != null">
+				fuwu = #{fuwu,jdbcType=INTEGER},
+			</if>
+			<if test="comment != null">
+				comment = #{comment,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=DATE},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.Comment">
+		update t_comment
+		set project_title = #{projectTitle,jdbcType=VARCHAR},
+		project_id = #{projectId,jdbcType=INTEGER},
+		accept_id = #{acceptId,jdbcType=INTEGER},
+		quality = #{quality,jdbcType=INTEGER},
+		speed = #{speed,jdbcType=INTEGER},
+		zhuanye = #{zhuanye,jdbcType=INTEGER},
+		fuwu = #{fuwu,jdbcType=INTEGER},
+		comment = #{comment,jdbcType=VARCHAR},
+		create_time = #{createTime,jdbcType=DATE}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
