@@ -4,11 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
-<title>竞标</title>
 </head>
 <html lang="zh-CN">
 <head>
-<title>竞标</title>
+<title>项目详细</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css"
@@ -48,7 +47,7 @@
 	type="text/javascript"></script>
 </head>
 <body class="global-main">
-	<header class="navbar">
+		<header class="navbar">
 		<div class="container top">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
@@ -64,22 +63,10 @@
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">精致文章</a></li>
-
-								<c:if test="${u!=null}">
-									<li class="project_nav"><a class="active"
-										href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
-								</c:if>
-								<c:if test="${u==null}">
-									<div class="navbar-login">
-										<a class="login_btn"
-											href="<%=request.getContextPath()%>/stp/toLogin">登录</a> <a
-											class="reg_btn"
-											href="<%=request.getContextPath()%>/stp/toRegister">注册</a>
-									</div>
-								</c:if>
 							</ul>
-						</div>
 
+
+						</div>
 					</nav>
 				</div>
 			</div>
@@ -115,9 +102,7 @@
 			<div class="col-lg-12" style="position: relative">
 				<div style="padding-top: 10px; overflow: hidden;">
 					<div class="left">
-						<h2>
-							<font color="red">${message}</font>
-						</h2>
+						<h2><font color="red">${message}</font></h2>
 						<br>
 						<div class="content">项目名：${project.title}</div>
 
@@ -138,52 +123,11 @@
 								style="line-height: 24px; border-bottom: 1px solid transparent;">
 								${project.desc}</div>
 						</div>
-
-						<c:choose>
-							<c:when test="${u==null}">
-								<div id="jingjia" title="我要竞标"
-									style="width: 900px; height: 40px; background: #2EB135; padding-left: 220px; padding-top: 0.5px">
-									<h4>
-										<font color="white"><a
-											href="<%=request.getContextPath()%>/stp/toLogin">你还未登入，请您先登入！点击前往登入</a></font>
-									</h4>
-								</div>
-							</c:when>
-
-							<c:otherwise>
-								<form action="<%=request.getContextPath()%>/stp/jingbiao"
-									id="operater">
-									<div>
-										<div>
-											<p>请输入您竞标的竞价：</p>
-											<input type="text" id="jiage" name="jingjia"
-												style="width: 900px; height: 40px;" />
-										</div>
-										<br>
-										<div id="jingjia" title="我要竞标"
-											style="width: 900px; height: 40px; background: #2EB135; padding-left: 420px;">
-											<h4>
-												<font color="white">我要竞标</font>
-											</h4>
-										</div>
-									</div>
-									<input type="hidden" name="projectId" value="${project.id}" />
-								</form>
-							</c:otherwise>
-						</c:choose>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#jingjia").click(function() {
-				$("#operater").submit();
-			});
-		});
-	</script>
 	<footer> </footer>
 	<style>
 .sidebar_code2 {

@@ -165,38 +165,38 @@
 	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.User">
 		update t_user
 		<set>
-			<if test="name != null and name.length>0">
+			<if test="name != null and name.length()>0">
 				name = #{name,jdbcType=VARCHAR},
 			</if>
-			<if test="pwd != null and pwd.length>0">
+			<if test="pwd != null and pwd.length()>0">
 				pwd = #{pwd,jdbcType=VARCHAR},
 			</if>
-			<if test="email != null and email.length>0">
+			<if test="email != null and email.length()>0">
 				email = #{email,jdbcType=VARCHAR},
 			</if>
-			<if test="mobile != null and mobile.length>0">
+			<if test="mobile != null and mobile.length()>0">
 				mobile = #{mobile,jdbcType=VARCHAR},
 			</if>
 		
-			<if test="skill != null and skill.length>0">
+			<if test="skill != null and skill.length()>0">
 				skill = #{skill,jdbcType=VARCHAR},
 			</if>
-			<if test="pic != null and pic.length>0">
+			<if test="pic != null and pic.length()>0">
 				pic = #{pic,jdbcType=VARCHAR},
 			</if>
-			<if test="address != null and address.length>0">
+			<if test="address != null and address.length()>0">
 				address = #{address,jdbcType=VARCHAR},
 			</if>
-			<if test="realName != null and realName.length>0">
+			<if test="realName != null and realName.length()>0">
 				real_name = #{realName,jdbcType=VARCHAR},
 			</if>
-			<if test="qq != null and qq.length>0">
+			<if test="qq != null and qq.length()>0">
 				qq = #{qq,jdbcType=VARCHAR},
 			</if>
-			<if test="jishu != null and jishu.length>0">
+			<if test="jishu != null and jishu.length()>0">
 				jishu = #{jishu,jdbcType=VARCHAR},
 			</if>
-			<if test="introduce != null and introduce.length>0">
+			<if test="introduce != null and introduce.length()>0">
 				introduce = #{introduce,jdbcType=LONGVARCHAR},
 			</if>
 		</set>

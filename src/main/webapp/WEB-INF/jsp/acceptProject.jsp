@@ -34,9 +34,8 @@
 		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
 		<div class="main-content">
 			<div class="row role-content">
-				<h2>我的项目</h2>
+				<h2>我的项目(${message})</h2>
 				<br>
-				<h2><font color="red">${message}</font></h2>
 				<table class="table table-recommend">
 					<thead>
 						<tr>
@@ -87,6 +86,7 @@
 
 		</div>
 	</div>
+	<footer></footer>
 	<!-- /container -->
 	<style>
 .sidebar_code2 {
@@ -127,52 +127,6 @@
 	height: 100px;
 }
 </style>
-
-	<script type="text/javascript">
-		$(function() {
-			$('#myCarousel1').carousel({
-				interval : 4000
-			});
-			$("div.accordion-heading-running").mousemove(function() {
-				$("div.accordion-body-running").removeClass("in");
-				$(this).next().addClass("in");
-				$(this).mouseout(function() {
-					$(this).removeClass("in");
-				});
-			});
-			$("div.accordion-heading-finish").mousemove(function() {
-				$("div.accordion-body-finish").removeClass("in");
-				$(this).next().addClass("in");
-				$(this).mouseout(function() {
-					$(this).removeClass("in");
-				});
-			});
-			$('.jbf_search_input').click(function() {
-				$('.jbf_search_input').val('');
-			});
-
-			if ($("#yzm").length > 0) {
-				cgpwd();
-				$("#yzm").click(function() {
-					cgpwd();
-				});
-			}
-
-			$.ajax({
-				type : 'post',
-				url : '/page/help/getUserLogo',
-				dataType : 'text',
-				data : '',
-				complete : function(response) {
-					$('#userALogo').html(response.responseText);
-				}
-			});
-		});
-		function cgpwd() {
-			$("#yzm").attr('src', '/authpic/getcode/' + new Date().getTime());
-			$("#authcode").val('');
-		}
-	</script>
 
 
 

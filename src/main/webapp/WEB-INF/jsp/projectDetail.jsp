@@ -73,28 +73,13 @@
 									style="line-height: 24px; border-bottom: 1px solid transparent;">
 									${project.desc}</div>
 							</div>
-							<div id="message"></div>
-							<c:if test="${type==0}">
-								<div id="operater">
-									<div>
-										<p>请输入您竞标的竞价：</p>
-										<input type="text" id="jiage" name="jingjia" />
-									</div>
-									<br>
-									<div id="jingjia" title="我要竞标"
-										style="width: 900px; height: 40px; background: #2EB135; padding-left: 420px; padding-top: 13px;">
-										<h4>
-											<font color="white">我要竞标</font>
-										</h4>
-									</div>
-								</div>
-							</c:if>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+		<footer></footer>
 	<style>
 .sidebar_code2 {
 	display: block;

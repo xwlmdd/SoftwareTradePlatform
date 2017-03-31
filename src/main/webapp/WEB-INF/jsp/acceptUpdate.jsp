@@ -218,40 +218,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		$('#userTypeNew .modify')
-				.click(
-						function() {
-							$('#userTypeNew .cancle').show();
-							$('#userTypeNew .cancle')
-									.after(
-											"<br /><label class='radio-inline'><input value='jzsbz' name='huiyuanleixing' type='radio' checked='checked'  /> 兼职程序员 </label>&nbsp;&nbsp;<label class='radio-inline'><input value='soho' name='huiyuanleixing' type='radio'  /> 全职程序员 </label>");
-							$('#userTypeNew .modify').hide();
-						});
-		$('#userTypeNew .cancle').click(function() {
-			$('#userTypeNew .modify').show();
-			$('#userTypeNew .cancle').nextAll().remove();
-			$('#userTypeNew .cancle').hide();
-		});
-
-		$('#ms').change(function() {
-			var selectVal = $('#ms').multipleSelect('getSelects');
-			console.log(selectVal);
-
-			if (selectVal) {
-				$("#xiangmufenlei").val(selectVal);
-			}
-
-		}).multipleSelect({
-			width : '100%',
-			placeholder : "请选择擅长项目",
-			selectAll : false
-		});
-	</script>
-	</div>
-	</div>
-	</div>
-
+		<footer></footer>
 	<style>
 .sidebar_code2 {
 	display: block;
@@ -338,7 +305,7 @@
 			$("#authcode").val('');
 		}
 	</script>
-	<footer></footer>
+
 
 
 </body>

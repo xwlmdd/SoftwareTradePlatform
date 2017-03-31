@@ -122,6 +122,24 @@ public class CoreController {
 		return "projectDetail";
 	}
 	
+	/**
+	 * 选择竞标人
+	 * @param projectId
+	 * @param modelMap
+	 * @return
+	 */
+	@RequestMapping("choose")
+	public String  choose(int projectId,int acceptId,ModelMap modelMap,int id){
+		projectServiceImpl.choose(projectId,acceptId);
+		modelMap.addAttribute("message", "选择成功！请尽快和接包人联系！");
+		Project p = new Project();
+		p.setSendId(id);
+		List<Project> projectList = projectServiceImpl.getProject(p);
+		modelMap.addAttribute("projectList", projectList);
+		return "sendMyProject";
+	}
+	
+	
 	@RequestMapping(value = "jingbiao")
 	public String jingbiao(ProAccept proAccept,ModelMap modelMap,HttpSession httpSession) {
 		System.out.println(proAccept);

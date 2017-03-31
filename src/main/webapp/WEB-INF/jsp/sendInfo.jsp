@@ -25,6 +25,13 @@
 	type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"
 	type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#changePic').click(function() {
+			$("myform").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="sendHead.jsp" />
@@ -34,12 +41,19 @@
 
 			<div class="row role-intro">
 				<div class="col-sm-2 col-md-2 role-intro-slider">
-					<div class="defaultimg">
-						<div class="settingimg">
-							<a href="http://www.sxsoft.com/upload_img">更换头像</a>
-						</div>
-						<img src="<%=request.getContextPath()%>/images/defaultimg_108.png"
-							title="xwlmdd" alt="xwlmdd" class="img-rounded">
+					<div class="defaultimg" style="width: 140px; height: 180px">
+						<img src="<%=request.getContextPath()%>/images/${u.pic}"
+							class="img-rounded">
+					</div>
+					<form action="${pageContext.request.contextPath }/stp/changePic"
+						method="post" id="myform" enctype="multipart/form-data">
+						<input name="pic" type="file"> <input type="hidden"
+							name="id" value="${u.id}" /> <input type="hidden" name="type"
+							value="${u.type}" />
+					</form>
+					<div class="settingimg">
+						<a id="changePic" class="btn btn-success"
+							href="javascript:void(0);">更换头像</a>
 					</div>
 					<div class="material_txt">
 						<a class="btn btn-success"
@@ -104,6 +118,7 @@
 		</div>
 	</div>
 	<!-- /container -->
+	<footer></footer>
 	<style>
 .sidebar_code2 {
 	display: block;
@@ -143,54 +158,6 @@
 	height: 100px;
 }
 </style>
-
-	<script type="text/javascript">
-		$(function() {
-			$('#myCarousel1').carousel({
-				interval : 4000
-			});
-			$("div.accordion-heading-running").mousemove(function() {
-				$("div.accordion-body-running").removeClass("in");
-				$(this).next().addClass("in");
-				$(this).mouseout(function() {
-					$(this).removeClass("in");
-				});
-			});
-			$("div.accordion-heading-finish").mousemove(function() {
-				$("div.accordion-body-finish").removeClass("in");
-				$(this).next().addClass("in");
-				$(this).mouseout(function() {
-					$(this).removeClass("in");
-				});
-			});
-			$('.jbf_search_input').click(function() {
-				$('.jbf_search_input').val('');
-			});
-
-			if ($("#yzm").length > 0) {
-				cgpwd();
-				$("#yzm").click(function() {
-					cgpwd();
-				});
-			}
-
-			$.ajax({
-				type : 'post',
-				url : '/page/help/getUserLogo',
-				dataType : 'text',
-				data : '',
-				complete : function(response) {
-					$('#userALogo').html(response.responseText);
-				}
-			});
-		});
-		function cgpwd() {
-			$("#yzm").attr('src', '/authpic/getcode/' + new Date().getTime());
-			$("#authcode").val('');
-		}
-	</script>
-
-
 
 </body>
 </html>

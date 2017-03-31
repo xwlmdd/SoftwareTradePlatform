@@ -80,7 +80,7 @@
 									href="<%=request.getContextPath()%>/stp/toPublicProject">发布项目</a>
 								</li>
 								<li><a
-									href="<%=request.getContextPath()%>/stp/myCheckProject">项目审核、竞标情况</a>
+									href="<%=request.getContextPath()%>/stp/myCheckProject?send_id=${u.id}">项目审核、竞标情况</a>
 								</li>
 								<li><a
 									href="<%=request.getContextPath()%>/stp/projectManage">项目管理</a>

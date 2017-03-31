@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>发包方个人中心</title>
+<title>后台管理</title>
 <link rel="archives" title="软件项目交易网" href="http://www.sxsoft.com/">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font-awesome.min.css">
@@ -29,12 +29,53 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<jsp:include page="sendHead.jsp" />
+	<header class="navbar">
+		<div class="container top">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<nav class="navbar" role="navigation">
+						<div class="navbar-header">
+							<a class="logo" href="javascript:void(0);"><img
+								src="<%=request.getContextPath()%>/images/logo.png"
+								alt="软件项目交易网"></a>
+						</div>
+						<div class="navbar-meun">
+							<ul class="list-unstyled">
+								<li><a href="javascript:void(0);">后台管理平台</a></li>
+								<li><span>${admin.name}</span></li>
+								<li><a
+									href="<%=request.getContextPath()%>/stp/adminLogout">退出</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="row main-user">
+		<div class="container main-user-container">
+			<div class="row main-user-container-row">
+				<div
+					class="col-xs-3 col-sm-3 col-md-3 nopadding-left main-user-slider">
+					<div class="role">
+						<a href="http://www.sxsoft.com/my/user">后台管理平台</a>
+					</div>
+					<ul class="list-unstyled onelevel">
+						<li><span>项目管理</span>
+							<ul class="list-unstyled twolevel">
+								<li><a href="<%=request.getContextPath()%>/stp/checkProject?checkCode=0">待审批项目</a>
+								</li>
+								<li><a href="<%=request.getContextPath()%>/stp/checkProject?checkCode=-1">已审批项目</a>
+								</li>
+							</ul></li>
+						
+					</ul>
+				</div>
 	<div
 		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
 		<div class="main-content">
 			<div class="row role-content">
-				<h2>我的项目</h2>
+				<h2>审批项目</h2>
 				<table class="table table-recommend">
 					<thead>
 						<tr>
@@ -42,7 +83,7 @@
 							<th scope="col">项目类型</th>
 							<th scope="col">项目状态</th>
 							<th scope="col">发布日期</th>
-							<th scope="col">操作</th>
+							<th scope="col">是否通过</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -56,26 +97,20 @@
 								<tr>
 									<td>${project.title }</td>
 									<td>${project.type }</td>
-									<td><c:if test="${project.checkCode==0}">
-														未审批
-													</c:if> <c:if test="${project.checkCode==1}">
-														正在竞标
-													</c:if> <c:if test="${project.checkCode==2}">
-														不通过
-													</c:if></td>
+									<td>已审批</td>
 									<td><fmt:formatDate value="${project.createTime}"
 											pattern="yyyy/MM/dd" /></td>
 									<c:if test="${project.checkCode==1}">
-										<td><a
-											href="<%=request.getContextPath()%>/stp/lookJingBiao?projectId=${project.id}">查看竞标情况</a>
+										<td>
+											通过
 										</td>
 									</c:if>
-									<c:if test="${project.checkCode==0}">
-										<td>等待管理员审批</td>
+									<c:if test="${project.checkCode==2}">
+										<td>
+											不通过
+										</td>
 									</c:if>
-									<c:if test="${project.checkCode=2}">
-										<td>无操作</td>
-									</c:if>
+									
 								</tr>
 							</c:forEach>
 						</c:if>
@@ -85,8 +120,7 @@
 
 		</div>
 	</div>
-<footer></footer>
-	<!-- /container -->
+	<footer></footer>
 	<style>
 .sidebar_code2 {
 	display: block;
@@ -126,7 +160,6 @@
 	height: 100px;
 }
 </style>
-
 
 
 </body>

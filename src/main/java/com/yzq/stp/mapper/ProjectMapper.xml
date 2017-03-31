@@ -39,6 +39,16 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 
+	<select id="getCheckProect" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from t_project
+		where check_code != 0
+	</select>
+
+
 	<select id="getProject" resultMap="ResultMapWithBLOBs"
 		parameterType="com.yzq.stp.model.Project">
 		select
@@ -103,7 +113,8 @@
 		check_code, type,zhouqi,
 		create_time,
 		`desc`)
-		values (#{sendId,jdbcType=INTEGER},
+		values
+		(#{sendId,jdbcType=INTEGER},
 		#{title,jdbcType=VARCHAR},
 		#{yusuan,jdbcType=VARCHAR},
 		#{sendName,jdbcType=VARCHAR},
@@ -250,6 +261,15 @@
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+
+	<update id="check">
+		update t_project
+		<set>
+			check_code = #{checkCode,jdbcType=INTEGER},
+		</set>
+		where id = #{projectId,jdbcType=INTEGER}
+	</update>
+
 	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yzq.stp.model.Project">
 		update
 		t_project
@@ -272,7 +292,8 @@
 		create_time = now(),
 		`desc` =
 		#{desc,jdbcType=LONGVARCHAR}
-		where id = #{id,jdbcType=INTEGER}
+		where id =
+		#{id,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.yzq.stp.model.Project">
 		update t_project

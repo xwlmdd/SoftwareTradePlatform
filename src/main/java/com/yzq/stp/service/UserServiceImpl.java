@@ -3,7 +3,9 @@ package com.yzq.stp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yzq.stp.mapper.AdminMapper;
 import com.yzq.stp.mapper.UserMapper;
+import com.yzq.stp.model.Admin;
 import com.yzq.stp.model.User;
 
 @Service
@@ -11,6 +13,10 @@ public class UserServiceImpl {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private AdminMapper adminMapper;
+	
 
 	/**
 	 * 注册0是需求方1发包方
@@ -44,7 +50,15 @@ public class UserServiceImpl {
 	}
 
 	public void updateUserInfo(User user) {
-		userMapper.updateByPrimaryKey(user);
+		userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	public Admin adminLogin(Admin admin) {
+		Admin dbAdmin = adminMapper.queryUser(admin);
+		if(dbAdmin!=null){
+			return dbAdmin;
+		}
+		return null;
 	}
 
 }

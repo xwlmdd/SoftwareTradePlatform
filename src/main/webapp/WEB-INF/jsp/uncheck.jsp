@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<title>发包方个人中心</title>
+<title>后台管理</title>
 <link rel="archives" title="软件项目交易网" href="http://www.sxsoft.com/">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font-awesome.min.css">
@@ -29,47 +29,88 @@
 	type="text/javascript"></script>
 </head>
 <body>
-	<jsp:include page="sendHead.jsp" />
+	<header class="navbar">
+		<div class="container top">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<nav class="navbar" role="navigation">
+						<div class="navbar-header">
+							<a class="logo" href="javascript:void(0);"><img
+								src="<%=request.getContextPath()%>/images/logo.png"
+								alt="软件项目交易网"></a>
+						</div>
+						<div class="navbar-meun">
+							<ul class="list-unstyled">
+								<li><a href="javascript:void(0);">后台管理平台</a></li>
+								<li><span>${admin.name}</span></li>
+								<li><a
+									href="<%=request.getContextPath()%>/stp/adminLogout">退出</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="row main-user">
+		<div class="container main-user-container">
+			<div class="row main-user-container-row">
+				<div
+					class="col-xs-3 col-sm-3 col-md-3 nopadding-left main-user-slider">
+					<div class="role">
+						<a href="http://www.sxsoft.com/my/user">后台管理平台</a>
+					</div>
+					<ul class="list-unstyled onelevel">
+						<li><span>项目管理</span>
+							<ul class="list-unstyled twolevel">
+								<li><a href="<%=request.getContextPath()%>/stp/checkProject?checkCode=0">待审批项目</a>
+								</li>
+								<li><a href="<%=request.getContextPath()%>/stp/checkProject?checkCode=-1">已审批项目</a>
+								</li>
+							</ul></li>
+						
+					</ul>
+				</div>
 	<div
 		class="col-xs-9 col-sm-9 col-md-9 main-user-content nopadding-right">
 		<div class="main-content">
 			<div class="row role-content">
-				<h2>我的项目:${project.title};预算${project.yusuan}</h2>
+				<h2>审批项目</h2>
 				<table class="table table-recommend">
 					<thead>
 						<tr>
-							<th scope="col">竞标人名称</th>
-							<th scope="col">擅长领域</th>
-							<th scope="col">报价</th>
-							<th scope="col">邮箱</th>
-							<th scope="col">电话</th>
-							<th scope="col">日期</th>
-							<th scope="col">查看详细情况</th>
-							<th scope="col">选择该接包人</th>
+							<th scope="col">项目</th>
+							<th scope="col">项目类型</th>
+							<th scope="col">项目状态</th>
+							<th scope="col">发布日期</th>
+							<th scope="col">查看项目详情</th>
+							<th scope="col">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:if test="${jingBiaoList==null}">
+						<c:if test="${projectList==null}">
 							<tr>
 								<td colspan="5">没有最新的项目动态</td>
 							</tr>
 						</c:if>
-						<c:if test="${jingBiaoList!=null}">
-							<c:forEach items="${jingBiaoList}" var="jingBiao">
+						<c:if test="${projectList!=null}">
+							<c:forEach items="${projectList}" var="project">
 								<tr>
-									<td>${jingBiao.name}</td>
-									<td>${jingBiao.skill}</td>
-									<td>${jingBiao.jingjia}</td>
-									<td>${jingBiao.email}</td>
-									<td>${jingBiao.mobile}</td>
-									<td><fmt:formatDate value="${jingBiao.createTime}"
+									<td>${project.title }</td>
+									<td>${project.type }</td>
+									<td>未审批</td>
+									<td><fmt:formatDate value="${project.createTime}"
 											pattern="yyyy/MM/dd" /></td>
-									<td><a
-										href="<%=request.getContextPath()%>/stp/acceptDetail?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">查看竞标人详细情况</a>
-									</td>
-									<td><a
-										href="<%=request.getContextPath()%>/stp/choose?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">确定</a>
-									</td>
+												<td>
+											<a target="_blank"
+											href="<%=request.getContextPath()%>/stp/lookProjectDetail?projectId=${project.id}">查看项目详情</a>
+										</td>
+										<td><a
+											href="<%=request.getContextPath()%>/stp/check?projectId=${project.id}&flag=1">通过</a>
+											||<a
+											href="<%=request.getContextPath()%>/stp/check?projectId=${project.id}&flag=0">不通过</a>
+										</td>
+									
 								</tr>
 							</c:forEach>
 						</c:if>
@@ -79,8 +120,7 @@
 
 		</div>
 	</div>
-	<!-- /container -->
-		<footer></footer>
+	<footer></footer>
 	<style>
 .sidebar_code2 {
 	display: block;

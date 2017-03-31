@@ -1,5 +1,8 @@
 package com.yzq.stp.controller;
 
+import java.io.File;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yzq.stp.model.User;
 import com.yzq.stp.service.UserServiceImpl;
@@ -65,6 +70,40 @@ public class UserController {
 		return "sendInfo";
 	}
 
+	@RequestMapping(value = "changePic", method = RequestMethod.POST)
+	public String changePic(HttpServletRequest request,
+							int id,
+							int type,
+			@RequestParam(value = "pic", required = true) MultipartFile file) {
+				
+			String fileName = file.getOriginalFilename();
+			System.out.println(fileName);
+			File targetFile = new File("f://picture", fileName);
+			if (!targetFile.exists()) {
+				targetFile.mkdirs();
+			}
+			// 保存
+			try {
+				file.transferTo(targetFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			User u = new User();
+			u.setId(id);
+			u.setPic(fileName);
+			
+			userServiceImpl.updateUserInfo(u);
+			User dbUser = userServiceImpl.loadUserInfo(id);
+			request.setAttribute("u",dbUser);
+		// 接包方
+		if (type == 0) {
+			return "acceptInfo";
+		}
+		// 发包方
+		return "sendInfo";
+	}
+
+	
 	/**
 	 * 接受方退出
 	 * 

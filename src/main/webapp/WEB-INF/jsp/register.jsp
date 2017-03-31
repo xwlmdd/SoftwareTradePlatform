@@ -45,7 +45,7 @@ header.navbar {
 								src="<%=request.getContextPath()%>/images/logo.png"></a>
 						</div>
 						<div class="navbar-login">
-							<a class="green" href="http://www.sxsoft.com/user/login"><b>登录</b></a>
+							<a class="green" href="<%=request.getContextPath()%>/stp/toLogin"><b>登录</b></a>
 						</div>
 					</nav>
 				</div>

@@ -41,8 +41,6 @@
 <script
 	src="<%=request.getContextPath()%>/js/jquery-ui-1.10.4.custom.js"
 	type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/js/formValidator-4.1.3.js"
-	type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"
 	type="text/javascript"></script>
 
@@ -67,22 +65,23 @@
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">精致文章</a></li>
+								<c:if test="${u!=null}">
+									<li class="project_nav"><a class="active"
+										href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
+								</c:if>
+								<c:if test="${u==null}">
+									<div class="navbar-login">
+										<a class="login_btn"
+											href="<%=request.getContextPath()%>/stp/toLogin">登录</a> <a
+											class="reg_btn"
+											href="<%=request.getContextPath()%>/stp/toRegister">注册</a>
+									</div>
+								</c:if>
 							</ul>
 
 
 						</div>
-						<c:if test="${u!=null}">
-							<li class="project_nav"><a class="active"
-								href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
-						</c:if>
-						<c:if test="${u==null}">
-							<div class="navbar-login">
-								<a class="login_btn"
-									href="<%=request.getContextPath()%>/stp/toLogin">登录</a> <a
-									class="reg_btn"
-									href="<%=request.getContextPath()%>/stp/toRegister">注册</a>
-							</div>
-						</c:if>
+
 					</nav>
 				</div>
 			</div>
@@ -146,7 +145,9 @@ ul.classify  a {
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<div class="col-sm-9 col-md-9" id="fast_pub">
-				<h2><font color="red">${message}</font></h2>
+					<h2>
+						<font color="red">${message}</font>
+					</h2>
 					<form class="form-horizontal" id="formID"
 						action="<%=request.getContextPath()%>/stp/publicProject">
 						<input type="hidden" value="${u.id }" name="sendId" />

@@ -147,8 +147,6 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="clear"></div>
 	<footer> </footer>
 	<style>
 .sidebar_code2 {

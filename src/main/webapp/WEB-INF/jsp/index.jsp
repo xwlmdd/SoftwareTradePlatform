@@ -65,22 +65,23 @@
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">精致文章</a></li>
+								<c:if test="${u!=null}">
+									<li class="project_nav"><a class="active"
+										href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
+								</c:if>
+								<c:if test="${u==null}">
+									<div class="navbar-login">
+										<a class="login_btn"
+											href="<%=request.getContextPath()%>/stp/toLogin">登录</a> <a
+											class="reg_btn"
+											href="<%=request.getContextPath()%>/stp/toRegister">注册</a>
+									</div>
+								</c:if>
 							</ul>
 
 
 						</div>
-						<c:if test="${u!=null}">
-							<li class="project_nav"><a class="active"
-								href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
-						</c:if>
-						<c:if test="${u==null}">
-							<div class="navbar-login">
-								<a class="login_btn"
-									href="<%=request.getContextPath()%>/stp/toLogin">登录</a> <a
-									class="reg_btn"
-									href="<%=request.getContextPath()%>/stp/toRegister">注册</a>
-							</div>
-						</c:if>
+
 					</nav>
 				</div>
 			</div>

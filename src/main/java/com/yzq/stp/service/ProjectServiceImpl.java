@@ -1,6 +1,7 @@
 package com.yzq.stp.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -104,5 +105,23 @@ public class ProjectServiceImpl {
 			return true;
 		}
 		return false;
+	}
+
+	public List<Project> getCheckProect() {
+		return projectMapper.getCheckProect();
+	}
+
+	public void check(int projectId,int checkCode) {
+		projectMapper.check(projectId,checkCode);
+	}
+
+	/**
+	 * 选择接包人
+	 * @param projectId
+	 * @param acceptId
+	 * @return
+	 */
+	public void choose(int projectId, int acceptId) {
+		proAcceptMapper.choose(projectId,acceptId);
 	}
 }

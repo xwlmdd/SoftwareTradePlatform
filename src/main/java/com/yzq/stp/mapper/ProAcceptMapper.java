@@ -32,4 +32,6 @@ public interface ProAcceptMapper {
      * @return
      */
     ProAccept hasJingbiao(@Param("projectId")Integer projectId, @Param("acceptId")Integer acceptId);
+
+	void choose(@Param("projectId")Integer projectId, @Param("acceptId")Integer acceptId);
 }

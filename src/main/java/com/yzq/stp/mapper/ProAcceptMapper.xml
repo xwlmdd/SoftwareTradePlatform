@@ -58,7 +58,7 @@
 		u.name,u.email,u.mobile,u.skill,u.real_name,p.project_id,p.accept_id,p.jingjia,p.create_time
 		from t_user as u ,t_pro_accept as p
 		where
-		p.id = #{projectId,jdbcType=INTEGER}
+		p.project_id = #{projectId,jdbcType=INTEGER}
 		and
 		u.id = p.accept_id
 	</select>
@@ -143,6 +143,20 @@
 			</if>
 		</trim>
 	</insert>
+	
+	<update id="choose" >
+		update t_pro_accept
+		<set>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="acceptId != null">
+				accept_id = #{acceptId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ischeck = 1
+	</update>
+	
 	<update id="updateByPrimaryKeySelective" parameterType="com.yzq.stp.model.ProAccept">
 		update t_pro_accept
 		<set>

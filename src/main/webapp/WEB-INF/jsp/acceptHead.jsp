@@ -40,19 +40,14 @@
 						</div>
 						<div class="navbar-meun">
 							<ul class="list-unstyled">
-								<li><a href="http://www.sxsoft.com/page/project">寻找项目</a></li>
-								<li><a href="http://www.sxsoft.com/page/user">接包达人</a></li>
-							</ul>
-						</div>
-						<div class="nav navbar-nav navbar-user">
-							<ul>
+								<li><a href="<%=request.getContextPath()%>/stp/loadIndexProject">寻找项目</a></li>
+								<li><a href="http://www.sxsoft.com/page/user">精选文章</a></li>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
 									<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/logout">退出</a></li>
 							</ul>
 						</div>
-
 					</nav>
 				</div>
 			</div>
