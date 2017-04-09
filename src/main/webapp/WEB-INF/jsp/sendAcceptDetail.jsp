@@ -125,12 +125,6 @@
 								<div id="example" class="pagination pagination-right">
 									<ul>
 										<li class="active"><a title="Current page is 1">1</a></li>
-										<li><a title="Go to page 2">2</a></li>
-										<li><a title="Go to page 3">3</a></li>
-										<li><a title="Go to page 4">4</a></li>
-										<li><a title="Go to page 5">5</a></li>
-										<li><a title="Go to page 6">6</a></li>
-										<li><a title="Go to page 7">7</a></li>
 										<li><a class="black" title="Go to next page">&gt;</a></li>
 									</ul>
 								</div>

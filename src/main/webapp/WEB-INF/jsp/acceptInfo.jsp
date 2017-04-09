@@ -43,7 +43,7 @@ $(function() {
 			<div class="row role-intro">
 				<div class="col-sm-2 col-md-2 role-intro-slider">
 					<div class="defaultimg" style="width: 140px;height: 180px">
-						<img src="<%=request.getContextPath()%>/images/${u.pic}"
+						<img src="file:///D:/stp/images/${u.pic}"
 							class="img-rounded">
 					</div>
 						<form action="${pageContext.request.contextPath }/stp/changePic"

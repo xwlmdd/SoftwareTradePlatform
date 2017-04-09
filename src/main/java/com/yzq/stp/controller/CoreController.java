@@ -131,9 +131,11 @@ public class CoreController {
 	@RequestMapping("choose")
 	public String  choose(int projectId,int acceptId,ModelMap modelMap,int id){
 		projectServiceImpl.choose(projectId,acceptId);
+		//checkcode 2：正在开发
+		projectServiceImpl.check(projectId, 2);
 		modelMap.addAttribute("message", "选择成功！请尽快和接包人联系！");
 		Project p = new Project();
-		p.setSendId(id);
+		p.setSendId(new Integer(id));
 		List<Project> projectList = projectServiceImpl.getProject(p);
 		modelMap.addAttribute("projectList", projectList);
 		return "sendMyProject";

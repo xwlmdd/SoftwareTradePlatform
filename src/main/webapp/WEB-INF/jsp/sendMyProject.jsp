@@ -61,19 +61,32 @@
 													</c:if> <c:if test="${project.checkCode==1}">
 														正在竞标
 													</c:if> <c:if test="${project.checkCode==2}">
-														不通过
-													</c:if></td>
+														正在开发
+													</c:if>
+													</td>
 									<td><fmt:formatDate value="${project.createTime}"
 											pattern="yyyy/MM/dd" /></td>
 									<c:if test="${project.checkCode==1}">
-										<td><a
-											href="<%=request.getContextPath()%>/stp/lookJingBiao?projectId=${project.id}">查看竞标情况</a>
+										<td>
+										
+											<c:if test="${project.checkCode==0}">
+														未审批
+													</c:if> <c:if test="${project.checkCode==1}">
+														<a href="<%=request.getContextPath()%>/stp/lookJingBiao?projectId=${project.id}">查看竞标情况</a>
+													</c:if> <c:if test="${project.checkCode==2}">
+														正在开发
+													</c:if>
+											
+											
 										</td>
 									</c:if>
 									<c:if test="${project.checkCode==0}">
 										<td>等待管理员审批</td>
 									</c:if>
-									<c:if test="${project.checkCode=2}">
+									<c:if test="${project.checkCode==1}">
+										<td>无操作</td>
+									</c:if>
+									<c:if test="${project.checkCode==2}">
 										<td>无操作</td>
 									</c:if>
 								</tr>

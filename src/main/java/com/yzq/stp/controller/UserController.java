@@ -75,16 +75,18 @@ public class UserController {
 							int id,
 							int type,
 			@RequestParam(value = "pic", required = true) MultipartFile file) {
-				
-			String fileName = file.getOriginalFilename();
-			System.out.println(fileName);
-			File targetFile = new File("f://picture", fileName);
-			if (!targetFile.exists()) {
-				targetFile.mkdirs();
-			}
+		
+		String path = request.getSession().getServletContext().getContextPath()+"/images";
+		String fileName = file.getOriginalFilename();
+		System.out.println(path);
+		File targetFile = new File(path, fileName);
+		if (!targetFile.exists()) {
+			targetFile.mkdirs();
+		}
 			// 保存
 			try {
 				file.transferTo(targetFile);
+				System.out.println(targetFile.getAbsolutePath());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

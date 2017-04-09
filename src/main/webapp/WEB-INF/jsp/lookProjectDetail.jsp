@@ -64,8 +64,6 @@
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">精致文章</a></li>
 							</ul>
-
-
 						</div>
 					</nav>
 				</div>

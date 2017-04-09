@@ -68,7 +68,7 @@
 										href="<%=request.getContextPath()%>/stp/acceptDetail?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">查看竞标人详细情况</a>
 									</td>
 									<td><a
-										href="<%=request.getContextPath()%>/stp/choose?projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">确定</a>
+										href="<%=request.getContextPath()%>/stp/choose?id=${u.id}&projectId=${jingBiao.projectId}&acceptId=${jingBiao.acceptId}">确定</a>
 									</td>
 								</tr>
 							</c:forEach>
