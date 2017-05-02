@@ -61,8 +61,10 @@
 							<ul class="list-unstyled">
 								<li class="project_nav"><a class="active"
 									href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
-								<li class="user_nav"><a
-									href="<%=request.getContextPath()%>/stp/loadIndexProject">精致文章</a></li>
+								<c:if test="${u!=null}">
+									<li class="project_nav"><a class="active"
+										href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
+								</c:if>
 							</ul>
 						</div>
 					</nav>

@@ -5,8 +5,7 @@
 <html lang="zh-CN">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="软件外包，项目交易，软件招聘，兼职程序">
-<title>发包方注册页 | 软件项目交易网－中国最早的软件外包服务平台，专注实现中国程序员价值</title>
+<title>发包方注册页 </title>
 <link rel="archives" title="软件项目交易网" href="http://www.sxsoft.com/">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/font-awesome.css">
@@ -43,6 +42,9 @@ header.navbar {
 						<div class="navbar-header">
 							<a class="logo" href="http://www.sxsoft.com/"><img
 								src="<%=request.getContextPath()%>/images/logo.png"></a>
+						</div>
+						<div class="navbar-login">
+							<a class="green" href="<%=request.getContextPath()%>/stp/loadIndexProject"><b>首页</b></a>
 						</div>
 						<div class="navbar-login">
 							<a class="green" href="<%=request.getContextPath()%>/stp/toLogin"><b>登录</b></a>

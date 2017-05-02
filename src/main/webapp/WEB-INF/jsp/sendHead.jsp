@@ -37,10 +37,12 @@
 								src="<%=request.getContextPath()%>/images/logo.png"></a>
 						</div>
 						<div class="navbar-meun">
+							
+						
 							<ul class="list-unstyled">
+								<li><a href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
 								<li><a
 									href="<%=request.getContextPath()%>/stp/toPublicProject">发布项目</a></li>
-								<li><a href="http://www.sxsoft.com/page/user">接包达人</a></li>
 							</ul>
 						</div>
 						<div class="navbar-meun">
@@ -81,9 +83,6 @@
 								</li>
 								<li><a
 									href="<%=request.getContextPath()%>/stp/myCheckProject?send_id=${u.id}">项目审核、竞标情况</a>
-								</li>
-								<li><a
-									href="<%=request.getContextPath()%>/stp/projectManage">项目管理</a>
 								</li>
 							</ul></li>
 						<li><span>我要发布项目</span>

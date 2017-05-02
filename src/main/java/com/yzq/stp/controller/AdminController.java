@@ -103,7 +103,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 加载未审批和已审批项目
+	 * 审批项目
 	 * 
 	 * @param project
 	 * @param modelMap
@@ -120,7 +120,7 @@ public class AdminController {
 	
 	
 	/**
-	 * 加载项目
+	 * 加载已审批项目
 	 * @param projectId
 	 * @param modelMap
 	 * @return
@@ -131,6 +131,9 @@ public class AdminController {
 		modelMap.addAttribute("project", project);
 		return "lookProjectDetail";
 	}
+	
+
+
 	
 	
 

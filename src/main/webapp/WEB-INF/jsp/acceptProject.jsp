@@ -46,7 +46,6 @@
 							<th scope="col">报价</th>
 							<th scope="col">发布人邮箱</th>
 							<th scope="col">发布人电话</th>
-							<th scope="col">发布人qq</th>
 							<th scope="col">操作</th>
 						</tr>
 					</thead>
@@ -62,9 +61,9 @@
 									<td>${project.title }</td>
 									<td>${project.type }</td>
 									<td><c:if test="${project.ischeck==0}">
-														正在竞标
+														竞标中
 													</c:if> <c:if test="${project.ischeck==1}">
-														正在开发
+														开发中
 													</c:if> <c:if test="${project.ischeck==2}">
 														已完成
 													</c:if></td>
@@ -73,7 +72,6 @@
 									<td>${project.jingjia }</td>
 									<td>${project.email }</td>
 									<td>${project.mobile }</td>
-									<td>${project.qq }</td>
 									<td><a
 										href="<%=request.getContextPath()%>/stp/lookProject?projectId=${project.projectId}&type=${project.ischeck}">查看项目</a>
 									</td>

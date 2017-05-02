@@ -40,8 +40,8 @@
 						</div>
 						<div class="navbar-meun">
 							<ul class="list-unstyled">
+								<li><a href="<%=request.getContextPath()%>/stp/loadIndexProject">首页</a></li>
 								<li><a href="<%=request.getContextPath()%>/stp/loadIndexProject">寻找项目</a></li>
-								<li><a href="http://www.sxsoft.com/page/user">精选文章</a></li>
 								<li class="user_nav"><a
 									href="<%=request.getContextPath()%>/stp/loadUserInfo?id=${u.id}&type=${u.type}">${u.name}个人中心</a></li>
 									<li class="user_nav"><a
@@ -87,7 +87,7 @@
 						<li><span>推荐项目</span>
 							<ul class="twolevel">
 								<li><a
-									href="<%=request.getContextPath()%>/stp/loadProject?skill={u.skill}">推荐项目</a>
+									href="<%=request.getContextPath()%>/stp/loadProject?skill=${u.skill}&acceptId=${u.id}&ischeck=0">推荐项目</a>
 								</li>
 							</ul></li>
 						<li><span>我要竞标</span>

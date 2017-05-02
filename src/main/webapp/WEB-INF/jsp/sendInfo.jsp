@@ -41,20 +41,6 @@
 
 			<div class="row role-intro">
 				<div class="col-sm-2 col-md-2 role-intro-slider">
-					<div class="defaultimg" style="width: 140px; height: 180px">
-						<img src="file:///D:/stp/images/${u.pic}"
-							class="img-rounded">
-					</div>
-					<form action="${pageContext.request.contextPath }/stp/changePic"
-						method="post" id="myform" enctype="multipart/form-data">
-						<input name="pic" type="file"> <input type="hidden"
-							name="id" value="${u.id}" /> <input type="hidden" name="type"
-							value="${u.type}" />
-					</form>
-					<div class="settingimg">
-						<a id="changePic" class="btn btn-success"
-							href="javascript:void(0);">更换头像</a>
-					</div>
 					<div class="material_txt">
 						<a class="btn btn-success"
 							href="<%=request.getContextPath()%>/stp/toUpdateUserInfo?id=${u.id}&type=1">修改资料</a>
@@ -70,21 +56,6 @@
 					</div>
 					<div class="hide"></div>
 
-				</div>
-			</div>
-
-			<div id="dialog-upload" class="hide">
-				<a><input type="hidden" id="formid"></a>
-				<div class="warnbox">
-					<form action="http://www.sxsoft.com/my/user/upload" method="post"
-						id="formID" enctype="multipart/form-data">
-						<div class="upload_window">
-							<input type="file" name="filename" id="fileToUpload" class=""
-								value="" style="width: 225px;"> <input type="submit"
-								class="btn" name="ok_new" value="上传头像">
-							<p>仅限上传JPG、GIF、PNG文件，100KB以下</p>
-						</div>
-					</form>
 				</div>
 			</div>
 

@@ -41,6 +41,9 @@ header.navbar {
 								src="<%=request.getContextPath()%>/images/logo.png"></a>
 						</div>
 						<div class="navbar-login">
+							<a class="green" href="<%=request.getContextPath()%>/stp/loadIndexProject"><b>首页</b></a>
+						</div>
+						<div class="navbar-login">
 							<a class="green" href="<%=request.getContextPath()%>/stp/toRegister"><b>注册</b></a>
 						</div>
 					</nav>

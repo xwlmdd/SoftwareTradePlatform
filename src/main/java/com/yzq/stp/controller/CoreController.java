@@ -35,6 +35,13 @@ public class CoreController {
 	@Autowired
 	private UserServiceImpl userServiceImpl; 
 
+	/**
+	 * 发布项目
+	 * @param project
+	 * @param modelMap
+	 * @param httpSession
+	 * @return
+	 */
 	@RequestMapping("publicProject")
 	private String publicProject(Project project, ModelMap modelMap,HttpSession httpSession) {
 		User u = (User) httpSession.getAttribute("u");
@@ -54,7 +61,7 @@ public class CoreController {
 	}
 
 	/**
-	 * 加载我的项目
+	 * 加载的项目信息
 	 * 
 	 * @param project
 	 * @param modelMap
@@ -81,9 +88,15 @@ public class CoreController {
 		return "sendAcceptList";
 	}
 
+	/**
+	 * 竞标方的详细信息
+	 * @param projectId
+	 * @param acceptId
+	 * @param modelMap
+	 * @return
+	 */
 	@RequestMapping("acceptDetail")
 	public String acceptDetail(int projectId,int acceptId,ModelMap modelMap) {
-//		proDetailList
 		//接方信息
 		User user = userServiceImpl.loadUserInfo(acceptId);
 		modelMap.addAttribute("accept",user);
@@ -144,7 +157,6 @@ public class CoreController {
 	
 	@RequestMapping(value = "jingbiao")
 	public String jingbiao(ProAccept proAccept,ModelMap modelMap,HttpSession httpSession) {
-		System.out.println(proAccept);
 		User u = (User) httpSession.getAttribute("u");
 		if(u==null){
 			modelMap.addAttribute("message", "请登入才能进行竞标！");
